@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> PAKISTAN </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://th.bing.com/th/id/R.454b6a90260df79027714abbac54acfb?rik=vaUUDSBL%2bN78NQ&riu=http%3a%2f%2fyost.com%2fUSFlagArtwork%2fus-flag-4693x2470.gif&ehk=9E%2fbZYGfoBUrpATuyejq8V3TPNgO20L%2bg5BUuN6%2fNXU%3d&risl=&pid=ImgRaw&r=0');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      /* overflow: hidden; */
+      position: relative;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .custom-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 250px;
+      opacity: 0.5;
+      transition: transform 0.5s, opacity 0.5s;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 3px solid transparent;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide.active {
+      transform: scale(1.2);
+      opacity: 1;
+      border: 3px solid yellow;
+
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    header {
+      text-align: center;
+            margin-top: 35px;
+      padding: 20px;
+      font-size: 32px;
+      background: #1e1e1e;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 28px;
+      color: #00ffc8;
+    }
+
+    .places-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .place-card {
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .place-body {
+      padding: 15px;
+    }
+
+    .place-body h3 {
+      font-size: 18px;
+      color: #00ffcc;
+      margin: 0 0 10px;
+    }
+
+    .place-body .rating,
+    .place-body .info,
+    .place-body .price {
+      font-size: 14px;
+      color: #ccc;
+      margin: 4px 0;
+    }
+
+    .reserve-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .reserve-btn:hover {
+      background: #00ccaa;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      border: none;
+      color: black;
+      font-weight: bold;
+      margin: 0 10px;
+      border-radius: 10px;
+    }
+
+    .controls button:hover {
+      background-color: #00aacc;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00d9ff;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 20px;
+      color: #004d00;
+      font-weight: bold;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .rating {
+      color: green;
+      margin: 5px 0;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #004d00;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .nav-left {
+      left: -20px;
+    }
+
+    .nav-right {
+      right: -20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none;
+      }
+
+      .card {
+        flex: 0 0 80%;
+      }
+    }
+
+    h2 {
+      padding: 20px;
+      color: #ffffff;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0 20px 20px;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      scroll-snap-align: start;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #004d00;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .rating {
+      color: green;
+      font-size: 14px;
+    }
+
+    .info {
+      color: #555;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+      margin: 10px 0;
+    }
+
+    .reserve-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #00e64d;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .reserve-btn:hover {
+      background-color: #00cc44;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+
+    .trip-check-wrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      /* Adjust height as needed */
+      margin-top: 60px;
+      /* top margin */
+      overflow: hidden;
+    }
+
+    .trip-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      /* FULL opacity */
+      z-index: 1;
+    }
+
+    .trip-check-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      /* optional for readability */
+    }
+
+    .trip-check-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .trip-check-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .trip-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .trip-btn {
+      padding: 10px 25px;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .trip-btn:hover {
+      background-color: rgb(0, 0, 0);
+    }
+
+
+    .area-section {
+      width: 100%;
+      margin-top: 50px;
+      padding: 40px 20px;
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/1200px-Flag_of_Pakistan.svg.png');
+    }
+
+    .area-container {
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1300px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .area-left {
+      flex: 1 1 60%;
+      min-width: 300px;
+    }
+
+    .area-left h3 {
+      color: #ffffff;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .area-link {
+      font-weight: bold;
+      color: #004e7c;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .area-left h4 {
+      color: #ffffff;
+      margin: 10px 0;
+    }
+
+    #desc {
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    #readMoreBtn {
+      background: none;
+      color: #0077aa;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .contact-links a {
+      color: #0077aa;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .nearby {
+      margin-top: 30px;
+    }
+
+    .nearby-section {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nearby-section ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .nearby-section li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .nearby-section li img {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+
+    .area-map {
+      flex: 1 1 35%;
+      min-width: 300px;
+    }
+
+    .area-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .footer-promo-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: sans-serif;
+      max-width: 1600px;
+      /* margin: 30px auto 0; */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-promo-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .promo-icon svg {
+      width: 58px;
+      height: 28px;
+      stroke: #000000;
+    }
+
+    .promo-text strong {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
+    .promo-subtext {
+      color: #000;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .promo-arrow svg {
+      stroke: #000000;
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-container {
+      margin-top: 50px;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    video.background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5%;
+      color: #fff;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      /* Optional dark overlay for readability */
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .hero-btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+
+    header {
+      background: #004e7c;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .hero-carousel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hotel-grid {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .hotel-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-card h3 {
+      margin: 0.75rem;
+    }
+
+    .hotel-card .location {
+      margin: 0 0.75rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .hotel-card .desc {
+      margin: 0.5rem 0.75rem 1rem;
+      flex-grow: 1;
+    }
+
+    .hotel-card .btn {
+      background: #00aacc;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.75rem;
+      margin: 0.75rem;
+      border-radius: 4px;
+    }
+
+    .hotel-card .btn:hover {
+      background: #0088aa;
+    }
+
+    .map-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .map-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+
+
+
+    header {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://tse3.mm.bing.net/th/id/OIP.GNSlwL6uS8s18PXyf0qQwAHaDs?rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 4px solid #00ffd0;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .hotel-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hotel-info h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #00ffcc;
+    }
+
+    .hotel-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .book-btn {
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .book-btn:hover {
+      background: #00ffcc;
+      color: #121212;
+    }
+
+
+    .footer {
+      background-image: url('4.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer {
+
+      position: relative;
+      background-image: url('https://tse3.mm.bing.net/th/id/OIP.GNSlwL6uS8s18PXyf0qQwAHaDs?rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 20px 30px;
+    }
+
+    .footer .overlay {
+      margin-top: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section ul li {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: #cccccc;
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: #ffffff;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #cccccc;
+    }
+
+    .social-icons a img {
+      height: 25px;
+    }
+
+    .social-icons a:hover {
+      color: #00acee;
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #aaaaaa;
+    }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #111;
+      border: 1px solid #444;
+      border-radius: 12px;
+      justify-content: center;
+    }
+
+    .filter-container select,
+    .filter-container input,
+    .filter-container button {
+      padding: 8px 12px;
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #666;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .filter-container select:hover,
+    .filter-container input:hover,
+    .filter-container button:hover {
+      border-color: #00ffcc;
+    }
+
+    .filter-container button {
+      font-weight: bold;
+    }
+
+    .filter-container button:hover {
+      background-color: #222;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Welcome To PAKISTAN</h2>
+
+  <div class="carousel-wrapper">
+    <div class="custom-carousel" id="customCarousel">
+      <!-- 10 Images -->
+
+
+      <div class="carousel-slide"><img
+          src="https://tse3.mm.bing.net/th/id/OIP.f7oJs6TEBu8WjPDsimBZCAHaEO?rs=1&pid=ImgDetMain&o=7&rm=3" alt="2">
+      </div>
+      <div class="carousel-slide"><img src="https://trangoadventure.com/wp-content/uploads/2019/06/Day-1-2.jpg" alt="3">
+      </div>
+      <div class="carousel-slide"><img
+          src="https://lp-cms-production.imgix.net/2019-06/91992443%20.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4"
+          alt="4"></div>
+      <div class="carousel-slide"><img src="https://letstravelpakistan.com.pk/wp-content/uploads/2023/02/1-7.png"
+          alt="5"></div>
+      <div class="carousel-slide"><img
+          src="https://www.nomads-travel-guide.com/wp-content/uploads/2019/12/sunset-Lahore-pakistan.jpg" alt="6"></div>
+      <div class="carousel-slide"><img
+          src="https://img.atlasobscura.com/f2xgNuuPSisYDcjRi6qqdDPxMRyXc0QaSHZ20BCUMXA/rt:fit/w:1200/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2V2ZW50/X2ltYWdlcy83NTFl/ZjdmNi00NGI1LTQ4/ODMtODk0OS04OTE4/OTg3Y2ExMTIzNWI4/YzIxOTIwYTAyMjNi/ZjhfUGFraXN0YW4g/MTEgLSBCYWRzaGFo/aSBNb3NxdWUucG5n.png"
+          alt="7"></div>
+      <div class="carousel-slide"><img
+          src="https://content.r9cdn.net/rimg/dimg/ef/33/f4774b59-city-23527-1726ee1b6c5.jpg?width=1200&height=630&xhint=1517&yhint=1400&crop=true"
+          alt="8"></div>
+      <div class="carousel-slide"><img
+          src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2024/08/15/Pakistan-visa-min-1024x768.png">
+      </div>
+      <div class="carousel-slide"><img
+          src="https://tse4.mm.bing.net/th/id/OIP.NVyF1G-areIuJBPQ7c_3BAHaE_?rs=1&pid=ImgDetMain&o=7&rm=3" alt="10">
+      </div>
+    </div>
+
+
+
+    <header>Best Places to Visit in PAKISTAN</header>
+    <h2>Top Attractions</h2>
+    <div class="filter-container">
+      <select id="durationFilter">
+        <option value="">All Durations</option>
+        <option value="short">0–1h</option>
+        <option value="medium">1–3h</option>
+        <option value="long">3h+</option>
+      </select>
+
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="low">Under $50</option>
+        <option value="mid">$50–$150</option>
+        <option value="high">Over $150</option>
+      </select>
+
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆ & up</option>
+        <option value="3">★★★☆☆ & up</option>
+      </select>
+
+      <input type="text" id="searchFilter" placeholder="Search by name...">
+
+      <button onclick="applyFilters()">Apply</button>
+      <button onclick="resetFilters()">Reset</button>
+    </div>
+
+
+    <div class="places-container">
+
+      <div class="place-card">
+        <a href="https://www.bookmundi.com/trip/hunza-pakistan-tour-34314?utm_source=chatgpt.com"><img
+            src="https://media.bookmundi.com/tour/hunza-pakistan-tour-533055-1611551581.jpg?format=auto&quality=60&width=1772"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>Hunza Pakistan Tour</h3>
+          <div class="rating">★★★★★
+            (5)</div>
+          <div class="info">Duration: Duration
+            10 days|No booking fees </div>
+          <div class="price">From $1,980</div>
+          <a href="https://www.bookmundi.com/trip/hunza-pakistan-tour-34314?utm_source=chatgpt.com"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.bookmundi.com/trip/pakistan-karakoram-highway-local-eats-and-village-life-47877"><img
+            src="https://media.bookmundi.com/products/47877/1179627-98d67f6f-3c4f-4153-a305-db4de08324c9.jpeg?format=auto&quality=60&width=1772"
+            alt="Tour 2"></a>
+        <div class="place-body">
+          <h3>Karakoram,Local Eats & Village Life</h3>
+          <div class="rating">★★★★★ (5)</div>
+          <div class="info">Duration: 13 days | No booking fees </div>
+          <div class="price">From $1090</div>
+          <a href="https://www.bookmundi.com/trip/pakistan-karakoram-highway-local-eats-and-village-life-47877"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.viator.com/Karachi/d50447-ttd/p-29206P181?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"><img
+            src="https://dynamic-media.tacdn.com/media/photo-o/2f/0b/7f/3b/caption.jpg?w=1200&h=800&s=1"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>Karachi Sightseeing Private City Tour</h3>
+          <div class="rating">★★★✬✬ (3)</div>
+          <div class="info">Duration: 4h | Free cancellation</div>
+          <div class="price">From $199</div>
+          <a href="https://www.viator.com/Karachi/d50447-ttd/p-29206P181?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.viator.com/tours/Karachi/Must-Eat-Tour-of-Karachi/d50447-29206P184"><img
+            src="https://dynamic-media.tacdn.com/media/photo-o/2f/0a/fc/07/caption.jpg?w=1100&h=800&s=1"
+            alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Street Food Tour of Karachi</h3>
+          <div class="rating">★★★★★ (5)</div>
+          <div class="info">Duration: 2-3h | Free cancellation</div>
+          <div class="price">From $199</div>
+          <a href="https://www.viator.com/tours/Karachi/Must-Eat-Tour-of-Karachi/d50447-29206P184"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+      <div class="place-card">
+        <a
+          href="https://www.viator.com/Lahore/d50344-ttd/p-264450P41?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"><img
+            src="https://dynamic-media.tacdn.com/media/photo-o/2f/27/20/93/caption.jpg?w=1200&h=800&s=1"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>Lahore Full Day Customized Guided Trip</h3>
+          <div class="rating">★★★★✬(4)</div>
+          <div class="info">Duration:8h | Free cancellation</div>
+          <div class="price">From $120</div>
+          <a href="https://www.viator.com/Lahore/d50344-ttd/p-264450P41?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.viator.com/Islamabad/d50280-ttd/p-395953P1?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"></a><img
+          src="https://dynamic-media.tacdn.com/media/photo-o/2f/1e/66/99/caption.jpg?w=1200&h=800&s=1"></a>
+        <div class="place-body">
+          <h3>Full-Day Sightseeing Tour Of Islamabad</h3>
+          <div class="rating">★★★★★ (5)</div>
+          <div class="info">Duration: 5 - 8h | Free cancellation</div>
+          <div class="price">From $95</div>
+          <a href="https://www.viator.com/Islamabad/d50280-ttd/p-395953P1?mcid=42383&campaign=3a7df159-e7b7-41e1-bfcd-16dbfca2c786_ox&pid=P00211032&medium=api&api_version=2.0"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.viator.com/tours/Islamabad/Islamabad-City-Tour/d50280-29206P68"><img
+            src="https://dynamic-media.tacdn.com/media/photo-o/2f/1e/75/7e/caption.jpg?w=1100&h=800&s=1"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>Private Islamabad City <br> Tour </h3>
+          <div class="rating">★★★★✬ (4)</div>
+          <div class="info">Duration: 4h | Free cancellation</div>
+          <div class="price">From $199</div>
+          <a href="https://www.viator.com/tours/Islamabad/Islamabad-City-Tour/d50280-29206P68"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.viator.com/tours/Lahore/3-Days-Kashmir-Neelam-valley-Tour/d50344-130490P5"><img
+            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/c8/c4/4a.jpg" alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Kashmir Neelam valley Tour</h3>
+          <div class="rating">★★★★★ (4.9)</div>
+          <div class="info">Duration: 3 days | Non-refundable</div>
+          <div class="price">From $399 </div>
+          <a href="https://www.viator.com/tours/Lahore/3-Days-Kashmir-Neelam-valley-Tour/d50344-130490P5"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <!-- Add more cards the same way if needed -->
+
+    </div>
+
+    <section class="trip-check-wrapper">
+      <video autoplay muted loop playsinline class="trip-bg-video">
+        <source src="https://cdn.pixabay.com/video/2018/11/29/19627-304735769_large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="trip-check-content">
+        <h3>Are you currently on your trip?</h3>
+        <p>Help us find experiences available for you.</p>
+        <div class="trip-buttons">
+          <button class="trip-btn">Yes</button>
+          <button class="trip-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="area-section">
+      <div class="area-container">
+
+        <!-- LEFT CONTENT -->
+        <div class="area-left">
+          <h3>The area</h3>
+          <a href="#" class="area-link">Pakistan, Islamabad, Constitution Avenue, No:1</a>
+          <h4>Neighborhood: Blue Area</h4>
+          <p id="desc">
+            Islamabad is a modern and scenic capital city known for its wide avenues, green landscapes, and serene
+            atmosphere. It offers a perfect blend of natural beauty and cultural landmarks. Visitors can explore iconic
+            attractions such as the Faisal Mosque,
+
+            <span id="dots">...</span><span id="more">
+              Islamabad is a modern and scenic capital city known for its wide avenues, green landscapes, and serene
+              atmosphere. It offers a perfect blend of natural beauty and cultural landmarks. Visitors can explore
+              iconic attractions such as the Faisal Mosque, Pakistan Monument, Lok Virsa Museum, and the lush trails of
+              Margalla Hills National Park. The city is well-planned, clean, and peaceful, with well-maintained gardens,
+              contemporary shopping areas, and a variety of restaurants serving both local and international cuisines.
+              Its central location makes it an ideal base for day trips to nearby hill stations like Murree and
+              historical sites in Taxila, offering both traditional charm and modern conveniences for all types of
+              travelers.
+            </span>
+          </p>
+          <button onclick="toggleReadMore()" id="readMoreBtn">Read more</button>
+
+          <div class="contact-links">
+            <a href="#">Visit website</a> | <a href="#">Call</a>
+          </div>
+
+          <div class="nearby">
+            <h4>Best nearby</h4>
+            <div class="nearby-section">
+              <div>
+                <strong>Restaurants</strong><br />
+                <span>500+ within 3 miles</span>
+                <ul>
+                  <li><a href="https://reviewmonkey.pk/tuscany-courtyard-islamabad-review/?utm_source=chatgpt.com"><img
+                        src="https://reviewmonkey.pk/wp-content/uploads/2018/12/t.courtyard-outdoor-3.jpg" alt=""></a>
+                    Tuscany Courtyard</li>
+                  <li><a href="https://www.serenahotels.com/islamabad/accommodation"><img
+                        src="https://ik.imgkit.net/3vlqs5axxjf/external/https://www.cfmedia.vfmleonardo.com/imageRepo/6/0/94/220/326/ISH_O.jpg?tr=w-1200%2Cfo-auto%2Cdi-ami-fallback.png"
+                        alt=""></a> Al-Maghreb</li>
+                  <li><a href="https://www.serenahotels.com/islamabad/experiences"><img
+                        src="https://image-tc.galaxy.tf/wijpeg-bvswcim660vy2f66zepefcqsc/ish-zamana-3_standard.jpg?crop=92%2C0%2C1417%2C1063&height=382&width=382"
+                        alt=""></a> Baradari</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Attractions</strong><br />
+                <span>1,000 within 6 miles</span>
+                <ul>
+                  <li><a href="https://en.wikipedia.org/wiki/Faisal_Mosque?utm_source=chatgpt.com"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Ali_Mujtaba_WLM2017_FAISAL_MOSQUE_019.jpg/500px-Ali_Mujtaba_WLM2017_FAISAL_MOSQUE_019.jpg"
+                        alt=""></a>Faisal Mosque</li>
+                  <li><a href="https://en.wikipedia.org/wiki/Pakistan_Monument?utm_source=chatgpt.com"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Blue_Hour_at_Pakistan_Monument.jpg/500px-Blue_Hour_at_Pakistan_Monument.jpg"
+                        alt=""></a> Pakistan Monument & Museum</li>
+                  <li><a href="https://en.wikipedia.org/wiki/Lok_Virsa_Museum?utm_source=chatgpt.com"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/A_Pakistani_Gate.jpg/330px-A_Pakistani_Gate.jpg"
+                        alt=""></a> Lok Virsa Heritage Museum</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT MAP -->
+        <div class="area-map">
+          <iframe src="https://www.google.com/maps?q=Islamabad,+Pakistan&output=embed" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="footer-promo-box">
+          <div class="footer-promo-content">
+            <div class="promo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#002E1A"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0Z" />
+                <circle cx="12" cy="10" r="3" />
+                <path d="m3 3 2 2" />
+              </svg>
+            </div>
+            <div class="promo-text">
+              <strong>Find things to do in Pakistan
+              </strong>
+              <div class="promo-subtext">Sights, experiences, and restaurants picked just for you. </div>
+            </div>
+          </div>
+          <div class="promo-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#002E1A" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l9-9-9-9" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <div class="hero-container">
+      <video class="background-video" autoplay muted loop playsinline>
+        <source
+          src="https://videocdn.cdnpk.net/videos/82823b44-95ac-4920-a78b-44a461576140/horizontal/previews/clear/large.mp4?token=exp=1755586275~hmac=9afcc9be98f084eaebeef243f25eb0c7df86aa20ad1b6af568b45d48acf3cbd8"
+          type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-content">
+        <h1>Explore The Wanderer's guide to Pakistan</h1>
+        <p>Iconic landmarks, breathtaking landscapes, vibrant cities—explore the blend of culture, nature, and adventure
+          across the Pakistan.</p>
+        <button class="hero-btn">Plan your trip</button>
+      </div>
+    </div>
+
+
+    <header>BEST HOTEL IN PAKISTAN</header>
+
+    <div class="container">
+
+      <div class="hotel-card">
+        <a href="https://www.lhw.com/hotel/Islamabad-Serena-Hotel-Islamabad-Pakistan?ext=gislmbsr"><img
+            src="https://static-new.lhw.com/HotelImages/Final/LW1878/lw1878_94220326_720x450.jpg" alt="Hotel 1">
+          <div class="hotel-info">
+            <h3>Islamabad Serena Hotel</h3>
+        </a>
+        <p>$$180–$250/night – 5-star</p>
+        <p>City views, modern amenities, refined service</p>
+        <a href="https://www.lhw.com/hotel/Islamabad-Serena-Hotel-Islamabad-Pakistan?ext=gislmbsr" class="book-btn">Book
+          Now</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <a href="https://www.marriott.com/en-us/hotels/isdib-islamabad-marriott-hotel/overview/"> <img
+          src="https://cache.marriott.com/marriottassets/universal-nav/deals/MR_UnivNav_Deals_clsc.jpg?&interpolation=progressive-bilinear&downsize=600px:*"
+          alt="Hotel 2">
+        <div class="hotel-info">
+          <h3>Islamabad Marriott Hotel</h3>
+      </a>
+      <p>$180–$250/night – 5-star</p>
+      <p>City views, modern amenities, refined service</p>
+      <a href="https://www.marriott.com/en-us/hotels/isdib-islamabad-marriott-hotel/overview/" class="book-btn">Book
+        Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-karachi/"><img
+        src="https://www.pchotels.com/assets/images/royal-suit-desktops.jpg" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Pearl Continental Hotel, Karachi</h3>
+    </a>
+    <p>$130–$200/night – 5-star chain flagship</p>
+    <p>Rooftop pool, multiple fine-dining venues, spa & conference facilities</p>
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-karachi/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.serenahotels.com/"><img
+        src="https://image-tc.galaxy.tf/wijpeg-120x2p6r0wra2h8j9xgx3pis/16-experiences-lion-rock-breakfast-1-1_standard.jpg?crop=172%2C0%2C1351%2C1013&height=384&width=332"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Faisalabad Serena Hotel</h3>
+    </a>
+    <p>Approx. $100–$150/night – 5-star modern retreat</p>
+    <p>Andalusian-style courtyards, peaceful ambiance, pool & dining</p>
+    <a href="https://www.serenahotels.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://booking.pchotels.com/getavailability?hotel_id=10750&checkin=2025-08-14&checkout=2025-08-15&Adult=">
+      <img src="https://www.pchotels.com/assets/images/Executive_Suit_.png" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Pearl Continental Hotel, Karachi</h3>
+    </a>
+    <p> $130–$200/night – 5-star chain flagship</p>
+    <p>Rooftop pool, fine dining, spa</p>
+    <a href="https://booking.pchotels.com/getavailability?hotel_id=10750&checkin=2025-08-14&checkout=2025-08-15&Adult="
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.serenahotels.com/serenaislamabad"><img
+        src="https://image-tc.galaxy.tf/wijpeg-7w18butf2pjcqbzfni4hpiy0j/exterior-view-isb-serena-hotel.jpg?width=1198&height=680"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Islamabad Serena Hotel</h3>
+    </a>
+    <p>$120–$180/night – luxury city oasis
+    </p>
+    <p>Heritage architecture, calm environment, pool & spa dining</p>
+    <a href="https://www.serenahotels.com/serenaislamabad" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.booking.com/hotel/pk/heritage-luxury-suites.html"><img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/446906886.jpg?k=01aeac4a8d4aaccd1e32b2c366a29ac898e3e566a9950bc9e034b4eee806f76b&o="
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Heritage Luxury Suites, Lahore</h3>
+    </a>
+    <p>$85–$120/night – boutique suite hotel</p>
+    <p>Andalusian-style courtyard, spacious rooms, modern luxury</p>
+    <a href="https://www.booking.com/hotel/pk/heritage-luxury-suites.html" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.booking.com/hotel/pk/pearl-continental-lahore.en-gb.html"><img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/278504590.jpg?k=2d6676b5981e1fafc018b5d092375e37656a136a18b08e07acebf39a6b395ae1&o="
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Pearl Continental Hotel, Lahore</h3>
+    </a>
+    <p>$120–$200/night – 5-star</p>
+    <p>Luxurious rooms, city center location, multiple dining options</p>
+    <a href="https://www.booking.com/hotel/pk/pearl-continental-lahore.en-gb.html" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.booking.com/hotel/pk/ramada-plaza-karachi.en-gb.html"> <img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/241146539.jpg?k=a48a1f69f406a71ea2edb9a2cad104526fd8ba4cc0d4d1789640e8db0aace5ef&o="
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Ramada Plaza, Karachi</h3>
+    </a>
+    <p>$90–$130/night – 4-star</p>
+    <p>Comfortable rooms, rooftop pool, business facilities</p>
+    <a href="https://www.booking.com/hotel/pk/ramada-plaza-karachi.en-gb.html" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.booking.com/hotel/pk/pearl-continental-bhurban.en-gb.html"> <img
+        src="https://cf.bstatic.com/xdata/images/hotel/square240/634251734.webp?k=3973ecd6543e1d525c9ebd1e26c2b3f1427f56fbbba0387bd59e8e0b2e2eab64&o=">
+      <div class="hotel-info">
+        <h3>Pearl Continental Hotel, Bhurban</h3>
+    </a>
+    <p> $110–$160/night – 4-star</a> </p>
+    <p>Hill station resort, beautiful views, great amenities</p>
+    <a href="https://www.booking.com/hotel/pk/pearl-continental-bhurban.en-gb.html" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://movenpickcentaurus.luxury-hotels.com/"> <img
+        src="https://movenpickcentaurus.luxury-hotels.com/data/Photos/500x500/16868/1686858/1686858485/Movenpick-Hotel-Centaurus-Islamabad-Exterior.JPEG"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Mövenpick Hotel Centaurus Islamabad</h3>
+    </a>
+    <p>$184/night — 5-star high-rise luxury</p>
+    <p>Indoor pool, spa & fitness center, rooftop bar, prime Blue Area location</p>
+    <a href="https://movenpickcentaurus.luxury-hotels.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-lahore"><img
+        src="https://www.pchotels.com/assets/images/lahore-Standard.png">
+      <div class="hotel-info">
+        <h3>Pearl-Continental Hotel Lahore</h3>
+    </a>
+    <p>US$130/night — 5-star city landmark</p>
+    <p>City views, modern service offerings</p>
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-lahore" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-bhurban"><img
+        src="https://www.pchotels.com/assets/images/RS.jpg" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Pearl-Continental Hotel Bhurban</h3>
+    </a>
+    <p>US$120/night — 5-star hill-station resort</p>
+    <p>Forest surroundings, high elevation views</p>
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-bhurban" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-muzaffarabad"></a><img
+      src="https://www.pchotels.com/assets/images/DELUXE_SUITE-M.png" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Pearl-Continental Hotel Muzaffarabad </h3></a>
+      <p>US$110/night — 5-star scenic retreat</p>
+      <p>Valley views, riverside ambience</p>
+      <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-muzaffarabad" class="book-btn">Book
+        Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-rawalpindi"><img
+        src="https://www.pchotels.com/assets/images/Executive_Suite.png" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Pearl-Continental Hotel Rawalpindi</h3>
+    </a>
+    <p>US$120/night — 5-star city comfort</p>
+    <p>Central location, modern services</p>
+    <a href="https://www.pchotels.com/hotel-and-resort/pearl-continental-hotel-rawalpindi" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.pchotels.com/hotel-and-resort"><img
+        src="https://www.pchotels.com/assets/images/GreenPak-Kalam-slider-5.jpg">
+      <div class="hotel-info">
+        <h3>GreenPak Kalam by PC</h3>
+    </a>
+    <p>US$100/night — 5-star mountain lodge</p>
+    <p>Nature escape with modern touches </p>
+    <a href="https://www.pchotels.com/hotel-and-resort" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.marriott.com/en-us/hotels/isbpk-islamabad-marriott-hotel/overview/"><img
+        src="https://cache.marriott.com/is/image/marriotts7prod/mc-isbpk-deluxe-room-14393-75054:Classic-Hor?wid=1140&fit=constrain"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Islamabad Marriott Hotel</h3>
+    </a>
+    <p>US$135/night — 5-star international luxury</p>
+    <p>Indoor pool, spa, multiple dining, Margalla foothills </p>
+    <a href="https://www.marriott.com/en-us/hotels/isbpk-islamabad-marriott-hotel/overview/" class="book-btn">Book
+      Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.atlantissanya.com/"><img
+        src="https://foliday-img.oss-cn-shanghai.aliyuncs.com/atlantis_website/screen/4096/atlantis/sanya/image/Rooms/Posedion-Underwater-Suite/Poseidon-Underwater-Suite-Bedroom-b.jpg"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Atlantis Sanya</h3>
+    </a>
+    <p>$250–$400/night – 5-star ocean-themed resort</p>
+    <p>Waterpark, marine exhibits, large-scale fun </p>
+    <a href="https://www.atlantissanya.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://stories.hilton.com/releases/waldorf-astoria-hotels-resorts-enters-a-new-era-of-luxury?utm_source=chatgpt.com"><img
+        src="https://stories-editor.hilton.com/wp-content/uploads/2025/07/Waldorf-Astoria-New-York-Lex-Yard-Credit-Waldorf-Astoria-New-York.jpg?w=1024"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Waldorf Astoria Shanghai Qiantan</h3>
+    </a>
+    <p>$400–$600/night – 5-star luxury hotel</p>
+    <p>River-facing rooftop lounges, indoor pool & full-service spa </p>
+    <a href="https://stories.hilton.com/releases/waldorf-astoria-hotels-resorts-enters-a-new-era-of-luxury?utm_source=chatgpt.com"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.mandarinoriental.com/en/beijing/qianmen"><img
+        src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJvYXV0aCI6eyJjbGllbnRfaWQiOiJzaXRlY29yZSJ9LCJwYXRoIjoibWFuZGFyaW4tb3JpZW50YWwtaG90ZWwtZ3JvdXBcL2ZpbGVcLzhibzhBdkdKdHBwYlljS2Iyakw0LmpwZyJ9:mandarin-oriental-hotel-group:vNP-Pqo486d0KvOO_6OHUM7FrbK8zkznX3QS9icUevs?width=1280&wid=1280&fmt=jpeg&op_usm=1,1,5,0&resMode=sharp2&fit=crop&qlt=75,0"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Mandarin Oriental Qianmen, Beijing</h3>
+    </a>
+    <p>$350–$550/night – 5-star boutique heritage resort</p>
+    <p>Restored hutong courtyard suites, Michelin-level dining & tranquil spa </p>
+    <a href="https://www.mandarinoriental.com/en/beijing/qianmen" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://press.mandarinoriental.com/mo-suzhou"><img
+        src="https://press.mandarinoriental.com/wp-content/uploads/2025/02/8f0e9a094dc07bf62bc046d217e5e54e-l.jpg"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Mandarin Oriental, Suzhou</h3>
+    </a>
+    <p>$350–$550/night – 5-star lakeside retreat</p>
+    <p>Panoramic Jinji Lake views, ultra-luxury sustainable design in Suzhou Industrial Park</p>
+    <a href="https://press.mandarinoriental.com/mo-suzhou" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <!-- Add 18 more hotel cards here -->
+
+  </div>
+
+
+  <div class="hero-container">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source
+        src="https://www.pexels.com/download/video/17780699/"
+        type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+  <script>
+    function applyFilters() {
+      const duration = document.getElementById("durationFilter").value;
+      const price = document.getElementById("priceFilter").value;
+      const rating = document.getElementById("ratingFilter").value;
+      const search = document.getElementById("searchFilter").value.toLowerCase();
+
+      const cards = document.querySelectorAll(".place-card");
+
+      cards.forEach(card => {
+        const nameText = card.querySelector("h3")?.innerText.toLowerCase() || "";
+        const durationText = card.querySelector(".info")?.innerText || "";
+        const priceText = card.querySelector(".price")?.innerText.replace(/[^\d]/g, "") || "0";
+        const ratingText = card.querySelector(".rating")?.innerText || "";
+
+        let show = true;
+
+        // Duration filter
+        if (duration === "short" && !durationText.includes("min")) show = false;
+        if (duration === "medium" && !(durationText.includes("1h") || durationText.includes("2h") || durationText.includes("3h"))) show = false;
+        if (duration === "long" && (durationText.includes("30") || durationText.includes("45") || durationText.includes("min"))) show = false;
+
+        // Price filter
+        const priceValue = parseInt(priceText, 10);
+        if (price === "low" && priceValue >= 50) show = false;
+        if (price === "mid" && (priceValue < 50 || priceValue > 150)) show = false;
+        if (price === "high" && priceValue <= 150) show = false;
+
+        // Rating filter
+        if (rating) {
+          const ratingNum = (ratingText.match(/★/g) || []).length;
+          if (ratingNum < parseInt(rating)) show = false;
+        }
+
+        // Search filter
+        if (search && !nameText.includes(search)) show = false;
+
+        card.style.display = show ? "block" : "none";
+      });
+    }
+
+    function resetFilters() {
+      document.getElementById("durationFilter").value = "";
+      document.getElementById("priceFilter").value = "";
+      document.getElementById("ratingFilter").value = "";
+      document.getElementById("searchFilter").value = "";
+      document.querySelectorAll(".place-card").forEach(card => {
+        card.style.display = "block";
+      });
+    }
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+
+        const left = (currentIndex - 1 + slides.length) % slides.length;
+        const center = currentIndex;
+        const right = (currentIndex + 1) % slides.length;
+
+        if (index === left || index === center || index === right) {
+          slide.style.display = 'block';
+        }
+
+        if (index === center) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
+    setInterval(nextSlide, 4000); // auto-slide
+
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // gap included
+      carousel.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleReadMore() {
+      const dots = document.getElementById("dots");
+      const more = document.getElementById("more");
+      const btn = document.getElementById("readMoreBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        more.style.display = "none";
+        btn.textContent = "Read more";
+      } else {
+        dots.style.display = "none";
+        more.style.display = "inline";
+        btn.textContent = "Read less";
+      }
+    }
+
+
+
+  </script>
+
+
+
+  <footer class="footer">
+    <div class="overlay"></div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>More details</h3>
+
+      </div>
+
+
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: farhanalikolachi014@gmail.com</p>
+        <p>Phone: +92 313 0230246</p>
+        <div class="social-icons">
+          <a href="https://wa.me/+923130230246"><img
+              src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c99945a2.jpg"></a>
+          <a href="https://www.instagram.com/notyour_farhu/"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmw5rkDKJDFiG1OS5G_L7P-B6CDHGEk88VZw&s"></a>
+          <a href="https://www.facebook.com/profile.php?id=61554707979064"><img
+              src="https://img.freepik.com/premium-psd/facebook-logo-blue-circle_705838-12823.jpg?semt=ais_hybrid&w=740&q=80"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © Is it possible to explore all of Pakistan in 2025 on a low budget?
+    </div>
+  </footer>
+
+</body>
+
+</html>

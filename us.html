@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> USA </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://th.bing.com/th/id/R.454b6a90260df79027714abbac54acfb?rik=vaUUDSBL%2bN78NQ&riu=http%3a%2f%2fyost.com%2fUSFlagArtwork%2fus-flag-4693x2470.gif&ehk=9E%2fbZYGfoBUrpATuyejq8V3TPNgO20L%2bg5BUuN6%2fNXU%3d&risl=&pid=ImgRaw&r=0');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* General container style */
+    .filter-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 10px;
+      background-color: #000;
+      /* Black background */
+      border: 1px solid #fff;
+      /* White border */
+      border-radius: 12px;
+      /* Rounded corners */
+    }
+
+    /* Dropdowns, inputs, and date pickers */
+    .filter-container select,
+    .filter-container input,
+    .filter-container button {
+      padding: 8px 12px;
+      background-color: #000;
+      /* Black background */
+      color: #fff;
+      /* White text */
+      border: 1px solid #fff;
+      /* White border */
+      border-radius: 8px;
+      /* Rounded */
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect */
+    .filter-container select:hover,
+    .filter-container input:hover,
+    .filter-container button:hover {
+      background-color: #111;
+      /* Slightly lighter black */
+      border-color: #00ffcc;
+      /* Highlight border (cyan) */
+    }
+
+    /* Focused state */
+    .filter-container select:focus,
+    .filter-container input:focus {
+      border-color: #ffcc00;
+      /* Golden highlight */
+      box-shadow: 0 0 6px #ffcc00;
+    }
+
+    /* Button style */
+    .filter-container button {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .filter-container button:hover {
+      background-color: #222;
+      border-color: #ffcc00;
+      color: #ffcc00;
+    }
+
+    /* General container style */
+    .filter-container {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 10px;
+      background-color: #000;
+      /* Black background */
+      border: 1px solid #fff;
+      /* White border */
+      border-radius: 12px;
+      /* Rounded corners */
+    }
+
+    /* Dropdowns, inputs, and date pickers */
+    .filter-container select,
+    .filter-container input,
+    .filter-container button {
+      padding: 8px 12px;
+      background-color: #000;
+      /* Black background */
+      color: #fff;
+      /* White text */
+      border: 1px solid #fff;
+      /* White border */
+      border-radius: 8px;
+      /* Rounded */
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Hover effect */
+    .filter-container select:hover,
+    .filter-container input:hover,
+    .filter-container button:hover {
+      background-color: #111;
+      /* Slightly lighter black */
+      border-color: #00ffcc;
+      /* Highlight border (cyan) */
+    }
+
+    /* Focused state */
+    .filter-container select:focus,
+    .filter-container input:focus {
+      border-color: #ffcc00;
+      /* Golden highlight */
+      box-shadow: 0 0 6px #ffcc00;
+    }
+
+    /* Button style */
+    .filter-container button {
+      background-color: #000;
+      border: 1px solid #fff;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .filter-container button:hover {
+      background-color: #222;
+      border-color: #ffcc00;
+      color: #ffcc00;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #ffffff;
+    }
+    .carousel-wrapper {
+      width: 100%;
+      /* overflow: hidden; */
+      position: relative;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .custom-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 250px;
+      opacity: 0.5;
+      transition: transform 0.5s, opacity 0.5s;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 3px solid transparent;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide.active {
+      transform: scale(1.2);
+      opacity: 1;
+      border: 3px solid yellow;
+
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 35px;
+      padding: 20px;
+      font-size: 32px;
+      background: #1e1e1e;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 28px;
+      color: #00ffc8;
+    }
+
+    .places-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .place-card {
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .place-body {
+      padding: 15px;
+    }
+
+    .place-body h3 {
+      font-size: 18px;
+      color: #00ffcc;
+      margin: 0 0 10px;
+    }
+
+    .place-body .rating,
+    .place-body .info,
+    .place-body .price {
+      font-size: 14px;
+      color: #ccc;
+      margin: 4px 0;
+    }
+
+    .reserve-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .reserve-btn:hover {
+      background: #00ccaa;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      border: none;
+      color: black;
+      font-weight: bold;
+      margin: 0 10px;
+      border-radius: 10px;
+    }
+
+    .controls button:hover {
+      background-color: #00aacc;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00d9ff;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 20px;
+      color: #004d00;
+      font-weight: bold;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .rating {
+      color: green;
+      margin: 5px 0;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #004d00;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .nav-left {
+      left: -20px;
+    }
+
+    .nav-right {
+      right: -20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none;
+      }
+
+      .card {
+        flex: 0 0 80%;
+      }
+    }
+
+    h2 {
+      padding: 20px;
+      color: #ffffff;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0 20px 20px;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      scroll-snap-align: start;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #004d00;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .rating {
+      color: green;
+      font-size: 14px;
+    }
+
+    .info {
+      color: #555;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+      margin: 10px 0;
+    }
+
+    .reserve-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #00e64d;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .reserve-btn:hover {
+      background-color: #00cc44;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+
+    .trip-check-wrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      /* Adjust height as needed */
+      margin-top: 60px;
+      /* top margin */
+      overflow: hidden;
+    }
+
+    .trip-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      /* FULL opacity */
+      z-index: 1;
+    }
+
+    .trip-check-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      /* optional for readability */
+    }
+
+    .trip-check-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .trip-check-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .trip-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .trip-btn {
+      padding: 10px 25px;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .trip-btn:hover {
+      background-color: rgb(0, 0, 0);
+    }
+
+
+    .area-section {
+      width: 100%;
+      margin-top: 50px;
+      padding: 40px 20px;
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg');
+    }
+
+    .contact-section {
+      padding: 30px 20px;
+      background: black;
+      /* light background to blend with medical theme */
+    }
+
+    .contact-section .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #f6f7f8;
+      /* bootstrap blue */
+      font-weight: bold;
+    }
+
+    .contact-form {
+      background: black;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px white;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #979090;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+    }
+
+    .btn-submit {
+      display: inline-block;
+      background: #0d6efd;
+      color: #fff;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #0b5ed7;
+    }
+
+    .area-container {
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1300px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .area-left {
+      flex: 1 1 60%;
+      min-width: 300px;
+    }
+
+    .area-left h3 {
+      color: #ffffff;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .area-link {
+      font-weight: bold;
+      color: #004e7c;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .area-left h4 {
+      color: #ffffff;
+      margin: 10px 0;
+    }
+
+    #desc {
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    #readMoreBtn {
+      background: none;
+      color: #0077aa;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .contact-links a {
+      color: #0077aa;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .nearby {
+      margin-top: 30px;
+    }
+
+    .nearby-section {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      max-width: 90%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+      resize: none;
+    }
+
+    label {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: #aaa;
+      font-size: 14px;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-bottom: 2px solid #667eea;
+    }
+
+    input:focus~label,
+    input:valid~label,
+    textarea:focus~label,
+    textarea:valid~label {
+      top: -10px;
+      font-size: 12px;
+      color: #667eea;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #response {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+
+    .nearby-section ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .nearby-section li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .nearby-section li img {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+
+    .area-map {
+      flex: 1 1 35%;
+      min-width: 300px;
+    }
+
+    .area-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .footer-promo-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: sans-serif;
+      max-width: 1600px;
+      /* margin: 30px auto 0; */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-promo-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .promo-icon svg {
+      width: 58px;
+      height: 28px;
+      stroke: #000000;
+    }
+
+    .promo-text strong {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
+    .promo-subtext {
+      color: #000;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .promo-arrow svg {
+      stroke: #000000;
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-container {
+      margin-top: 50px;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    video.background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5%;
+      color: #fff;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      /* Optional dark overlay for readability */
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .hero-btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+
+    header {
+      background: #004e7c;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .hero-carousel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hotel-grid {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .hotel-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-card h3 {
+      margin: 0.75rem;
+    }
+
+    .hotel-card .location {
+      margin: 0 0.75rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .hotel-card .desc {
+      margin: 0.5rem 0.75rem 1rem;
+      flex-grow: 1;
+    }
+
+    .hotel-card .btn {
+      background: #00aacc;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.75rem;
+      margin: 0.75rem;
+      border-radius: 4px;
+    }
+
+    .hotel-card .btn:hover {
+      background: #0088aa;
+    }
+
+    .map-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .map-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+
+
+
+    header {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://th.bing.com/th/id/R.454b6a90260df79027714abbac54acfb?rik=vaUUDSBL%2bN78NQ&riu=http%3a%2f%2fyost.com%2fUSFlagArtwork%2fus-flag-4693x2470.gif&ehk=9E%2fbZYGfoBUrpATuyejq8V3TPNgO20L%2bg5BUuN6%2fNXU%3d&risl=&pid=ImgRaw&r=0');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 4px solid #00ffd0;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .hotel-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hotel-info h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #00ffcc;
+    }
+
+    .hotel-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .book-btn {
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .book-btn:hover {
+      background: #00ffcc;
+      color: #121212;
+    }
+
+
+    .footer {
+      background-image: url('4.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer {
+
+      position: relative;
+      background-image: url('https://cdn.pixabay.com/photo/2016/07/01/11/07/united-states-1490847_1280.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 20px 30px;
+    }
+
+    .footer .overlay {
+      margin-top: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section ul li {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: #cccccc;
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: #ffffff;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #cccccc;
+    }
+
+    .social-icons a img {
+      height: 25px;
+    }
+
+    .social-icons a:hover {
+      color: #00acee;
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #aaaaaa;
+    }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #111;
+      border: 1px solid #444;
+      border-radius: 12px;
+      justify-content: center;
+    }
+
+    .filter-container select,
+    .filter-container input,
+    .filter-container button {
+      padding: 8px 12px;
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #666;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .filter-container select:hover,
+    .filter-container input:hover,
+    .filter-container button:hover {
+      border-color: #00ffcc;
+    }
+
+    .filter-container button {
+      font-weight: bold;
+    }
+
+    .filter-container button:hover {
+      background-color: #222;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+
+<body>
+  
+
+  <h2>Welcome To USA</h2>
+
+  <div class="carousel-wrapper">
+    <div class="custom-carousel" id="customCarousel">
+      <!-- 10 Images -->
+
+
+      <div class="carousel-slide"><img
+          src="https://www.hlimg.com/images/things2do/738X538/6080137063_71b986b12f_b_1521546193t.jpg" alt="2"></div>
+      <div class="carousel-slide"><img
+          src="https://th.bing.com/th/id/OLC.Kpj0GkzubLpCCA480x360?&rs=1&pid=ImgDetMain&o=7&rm=3" alt="3">
+      </div>
+      <div class="carousel-slide"><img
+          src="http://img-aws.ehowcdn.com/560x560p/photos.demandstudios.com/getty/article/88/116/87754890.jpg" alt="4">
+      </div>
+      <div class="carousel-slide"><img
+          src="https://milesandlove.com/system/attachments/98/xlarge/la-maison-blanche-washington.jpg?1484427891"
+          alt="5"></div>
+      <div class="carousel-slide"><img
+          src="https://th.bing.com/th?id=OLC.MU/xtN/xl1Mzdw480x360&w=320&h=320&rs=1&pid=ImgDetMain&o=7&rm=3" alt="6">
+      </div>
+      <div class="carousel-slide"><img
+          src="https://www.fodors.com/wp-content/uploads/2018/11/HERO_Ultimate_Chicago_CST_Exterior_Aerial_VitoPalmisano.jpg"
+          alt="7"></div>
+      <div class="carousel-slide"><img
+          src="https://th.bing.com/th/id/R.ab05bc89080b3a162b0c71d603fdab3e?rik=gx2efQ4eSGZiHA&riu=http%3a%2f%2fwww.telegraph.co.uk%2fcontent%2fdam%2ftravel%2fSpark%2fDiscover-America%2fImages%2fbixby-creek-bridge-xlarge.jpg&ehk=Lywkp7f0JN2ov9eOBljrW7qRQQ1okuOCmDVCaOdUv%2f8%3d&risl=&pid=ImgRaw&r=0"
+          alt="8"></div>
+      <div class="carousel-slide"><img
+          src="https://maketimetoseetheworld.com/wp-content/uploads/2020/03/30-Best-Places-to-Visit-in-the-USA.jpg">
+      </div>
+      <div class="carousel-slide"><img
+          src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1JjBK7.img?w=768&h=512&m=6" alt="10"></div>
+    </div>
+
+
+
+    <header>Best Places to Visit in USA</header>
+    <h2>Top Attractions</h2>
+    <!-- Filters -->
+    <div class="filter-container">
+      <select id="durationFilter">
+        <option value="">All Durations</option>
+        <option value="short">0–1h</option>
+        <option value="medium">1–3h</option>
+        <option value="long">3h+</option>
+      </select>
+
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="low">Under $50</option>
+        <option value="mid">$50–$150</option>
+        <option value="high">Over $150</option>
+      </select>
+
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆ & up</option>
+        <option value="3">★★★☆☆ & up</option>
+      </select>
+
+      <input type="text" id="searchFilter" placeholder="Search by name...">
+
+      <button onclick="applyFilters()">Apply</button>
+      <button onclick="resetFilters()">Reset</button>
+    </div>
+
+
+    <div class="places-container" id="placesContainer">
+      <!-- place-cards will render here -->
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/las-vegas-l58/las-vegas-the-sphere-experience-postcard-from-earth-t703230/?ranking_uuid=7b1a73d0-f113-4cca-a6a9-f6619aa964e0"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/2641827f66f8405271c2efca3d3ddefdc2e6fe4c9c4ead62ac5c3c6c7ef8dcbe.png"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>Las Vegas</h3>
+          <div class="rating">★★★★✬
+            (4.7)</div>
+          <div class="info">Duration: 95 min | This activity is non-fundable</div>
+          <div class="price">From $89</div>
+          <a href="https://www.getyourguide.com/las-vegas-l58/las-vegas-the-sphere-experience-postcard-from-earth-t703230/?ranking_uuid=7b1a73d0-f113-4cca-a6a9-f6619aa964e0"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/naha-l147347/okinawa-full-day-bus-tour-to-yanbaru-national-park-t385881/?ranking_uuid=ddba5d64-e308-4cd5-9bfb-ac9c131c1eb2"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/5e9456b3b2a94.jpeg"
+            alt="Tour 2"></a>
+        <div class="place-body">
+          <h3>Okinawa</h3>
+          <div class="rating">★★★★✬ (4.3)</div>
+          <div class="info">Duration: 11h | Free cancellation</div>
+          <div class="price">From $94</div>
+          <a href="https://www.getyourguide.com/naha-l147347/okinawa-full-day-bus-tour-to-yanbaru-national-park-t385881/?ranking_uuid=ddba5d64-e308-4cd5-9bfb-ac9c131c1eb2"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/houston-l719/the-museum-of-fine-arts-houston-entry-ticket-t709829/?ranking_uuid=b1894699-3acd-4950-8367-07cc91c3e518"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/362e4cb71498dd04c90f957ed6559ae1e8116967b8198e90ccb9c162492497ac.jpg"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>The Museum of Fine Arts</h3>
+          <div class="rating">★★★★✬ (4.8)</div>
+          <div class="info">Duration: 2h | Free cancellation</div>
+          <div class="price">From $59</div>
+          <a href="https://www.getyourguide.com/houston-l719/the-museum-of-fine-arts-houston-entry-ticket-t709829/?ranking_uuid=b1894699-3acd-4950-8367-07cc91c3e518"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/washington-dc-l62/washington-dc-dc-monuments-guided-tour-by-e-cartdaynight-t834939/?ranking_uuid=b1894699-3acd-4950-8367-07cc91c3e518"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/40f740a5d5a866effab821c9ff43a4cfe2e91c76b30c8a168b782eac7ded5c75.jpeg"
+            alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Washington</h3>
+          <div class="rating">★★★★★ (4.9)</div>
+          <div class="info">Duration: 2h | Free cancellation</div>
+          <div class="price">From $48</div>
+          <a href="https://www.getyourguide.com/washington-dc-l62/washington-dc-dc-monuments-guided-tour-by-e-cartdaynight-t834939/?ranking_uuid=b1894699-3acd-4950-8367-07cc91c3e518"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/washington-dc-l62/dc-city-cruises-gourmet-brunch-lunch-or-dinner-cruise-t279712/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/be03af6e16bc991a.jpeg"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>DC: City Cruises Gourmet Brunch, Lunch, or Dinner Cruise</h3>
+          <div class="rating">★★★★☆ (4.2)</div>
+          <div class="info">Duration: 2–3H | Free cancellation</div>
+          <div class="price">From $78</div>
+          <a href="https://www.getyourguide.com/washington-dc-l62/dc-city-cruises-gourmet-brunch-lunch-or-dinner-cruise-t279712/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/chicago-l225/chicago-american-writers-museum-flexible-date-entry-ticket-t433857/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"></a><img
+          src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/6363233f71f64.jpeg"></a>
+        <div class="place-body">
+          <h3>Chicago: American Writers Museum Flexible Date Entry Ticket</h3>
+          <div class="rating">★★★★✬ (4.6)</div>
+          <div class="info">Duration: 1–14 days | Free cancellation</div>
+          <div class="price">From $00</div>
+          <a href="https://www.getyourguide.com/chicago-l225/chicago-american-writers-museum-flexible-date-entry-ticket-t433857/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/oahu-l4966/from-waikiki-private-custom-oahu-tour-t255652/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/d71cacb7ad35ddf1.jpeg"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>Oahu: Private Custom Island <br> Tour</h3>
+          <div class="rating">★★★★✬ (4.7)</div>
+          <div class="info">Duration: 6.5h | Free cancellation</div>
+          <div class="price">From $233</div>
+          <a href="https://www.getyourguide.com/oahu-l4966/from-waikiki-private-custom-oahu-tour-t255652/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://www.getyourguide.com/chicago-l225/chicago-favorites-walking-food-tasting-tour-t41850/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"><img
+            src="https://cdn.getyourguide.com/image/format=auto,fit=contain,gravity=auto,quality=60,width=1440,height=650,dpr=2/tour_img/f6b9ee530c241a7a.jpeg"
+            alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Chicago: Classic Food Walking Tour with Bike or Kayak Rental</h3>
+          <div class="rating">★★★★★ (4.8)</div>
+          <div class="info">Duration: 3h | Free cancellation</div>
+          <div class="price">From $80</div>
+          <a href="https://www.getyourguide.com/chicago-l225/chicago-favorites-walking-food-tasting-tour-t41850/?ranking_uuid=4a3abff6-9ff1-4be4-929e-498282202334"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <!-- Add more cards the same way if needed -->
+
+    </div>
+
+    <section class="trip-check-wrapper">
+      <video autoplay muted loop playsinline class="trip-bg-video">
+        <source src="https://cdn.pixabay.com/video/2022/10/21/135938-764370928_large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="trip-check-content">
+        <h3>Are you currently on your trip?</h3>
+        <p>Help us find experiences available for you.</p>
+        <div class="trip-buttons">
+          <button class="trip-btn">Yes</button>
+          <button class="trip-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="area-section">
+      <div class="area-container">
+
+        <!-- LEFT CONTENT -->
+        <div class="area-left">
+          <h3>The area</h3>
+          <a href="#" class="area-link">1600 Pennsylvania Avenue NW, Washington, DC 20500, USA
+            Neighborhood: National Mall</a>
+          <h4>Neighborhood: Sultanahmet</h4>
+          <p id="desc">
+            The National Mall is the heart of Washington, D.C., where some of the world’s most iconic and historic
+            landmarks are located just a short stroll from each other. From the White House and the Capitol Building to
+            the Lincoln Memorial, Washington Monument, and the Smithsonian Museums,
+
+            <span id="dots">...</span><span id="more">
+              The National Mall is the heart of Washington, D.C., where some of the world’s most iconic and historic
+              landmarks are located just a short stroll from each other. From the White House and the Capitol Building
+              to the Lincoln Memorial, Washington Monument, and the Smithsonian Museums, this area leaves visitors in
+              awe on a truly grand scale.
+
+              Despite being the political epicenter of the United States and a top tourist destination, the area manages
+              to maintain a peaceful and open atmosphere. Its wide avenues, green parks, and reflective pools make it
+              ideal for walking and sightseeing. With a diverse range of hotels, cafés, and restaurants to suit all
+              budgets and tastes, the National Mall offers a memorable and enriching experience.
+            </span>
+          </p>
+          <button onclick="toggleReadMore()" id="readMoreBtn">Read more</button>
+
+          <div class="contact-links">
+            <a href="#">Visit website</a> | <a href="#">Call</a>
+          </div>
+
+          <div class="nearby">
+            <h4>Best nearby</h4>
+            <div class="nearby-section">
+              <div>
+                <strong>Restaurants</strong><br />
+                <span>4,000 within 3 mile</span>
+                <ul>
+                  <li><a href="https://www.ebbitt.com/"><img
+                        src="https://emma-assets.s3.amazonaws.com/sorgb/95d7b58f999574eff75da1ef8000d70d/Form_Image_CRG_650x400.png"
+                        alt=""></a> Old Ebbitt Grill</li>
+                  <li><a href="https://www.wearefoundingfarmers.com/locations/washington-dc/"><img
+                        src="https://www.wearefoundingfarmers.com/wp-content/uploads/2020/02/LocationsFFDC_Header_01-1200x800.jpg"
+                        alt=""></a> Founding Farmers</li>
+                  <li><a href="https://www.thehamiltondc.com/"><img
+                        src="https://airandspace.si.edu/sites/default/files/styles/hero_lg/public/externals/4f204daa3c99c885609e40be2acc8326.jpg?itok=T5VAt2FK"
+                        alt=""></a> The Hamilton</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Attractions</strong><br />
+                <span>1,000 within 6 miles</span>
+                <ul>
+                  <li><a href="https://www.whitehouse.gov/"><img
+                        src="https://www.nps.gov/common/uploads/grid_builder/wamo/crop16_9/60FA673D-AF5F-88D7-01409788EFCC0E8B.jpg?width=640&quality=90&mode=crop"
+                        alt=""></a>Washington Monument</li>
+                  <li><a href="https://www.nps.gov/linc/index.htm"><img
+                        src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/14/2e/00/topkapi-sarayi.jpg?w=200&h=200&s=1"
+                        alt=""></a> Lincoln Memorial</li>
+                  <li><a href="https://www.visitthecapitol.gov/"><img
+                        src="https://www.visitthecapitol.gov/sites/default/files/styles/card_s/public/2022-11/hos_428161_card.jpg?itok=tuZ2C03W"
+                        alt=""></a> U.S. Capitol</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT MAP -->
+        <div class="area-map">
+          <iframe src="https://www.google.com/maps?q=White+House,+Washington+DC&output=embed" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="footer-promo-box">
+          <div class="footer-promo-content">
+            <div class="promo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#002E1A"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0Z" />
+                <circle cx="12" cy="10" r="3" />
+                <path d="m3 3 2 2" />
+              </svg>
+            </div>
+            <div class="promo-text">
+              <strong>Find things to do near the White House</strong>
+              <div class="promo-subtext">Sights, experiences, and restaurants picked just for you. </div>
+            </div>
+          </div>
+          <div class="promo-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#002E1A" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l9-9-9-9" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <div class="hero-container">
+      <video class="background-video" autoplay muted loop playsinline>
+        <source src="14043371_3840_2160_60fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-content">
+        <h1>Explore The Wanderer's guide to the USA</h1>
+        <p>Iconic landmarks, breathtaking landscapes, vibrant cities—explore the blend of culture, nature, and adventure
+          across the United States.</p>
+        <button class="hero-btn">Plan your trip</button>
+      </div>
+    </div>
+
+
+    <header>BEST HOTEL IN USA</header>
+
+    <div class="container">
+
+      <div class="hotel-card">
+        <a href="https://www.fourseasons.com/seattle/"><img
+            src="https://www.fourseasons.com/alt/img-opt/~65.1701/publish/content/dam/fourseasons/images/web/SEW/SEW_714_aspect16x9.jpg"
+            alt="Hotel 1">
+          <div class="hotel-info">
+            <h3>Four Seasons Hotel Seattle</h3>
+        </a>
+        <p>$2,000/night – 5-star hotel</p>
+        <p>Restaurant, Spa, Scenic Rooms</p>
+        <a href="https://www.fourseasons.com/seattle/" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <a href="https://www.ritzcarlton.com/en/hotels/sforz-the-ritz-carlton-san-francisco/overview/"> <img
+          src="https://cache.marriott.com/content/dam/marriott-renditions/SFORZ/sforz-balcony-6227-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1300px:*"
+          alt="Hotel 2">
+        <div class="hotel-info">
+          <h3>The Ritz-Carlton San Francisco</h3>
+      </a>
+      <p>$2,100+/night – 5‑star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.ritzcarlton.com/en/hotels/sforz-the-ritz-carlton-san-francisco/overview/"
+        class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.marriott.com/en-us/hotels/nycxr-the-st-regis-new-york/overview/"><img
+        src="https://cache.marriott.com/is/image/marriotts7prod/nycxr-exterior-1674:Pano-Hor?wid=1600&fit=constrain"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>St. Regis New York</h3>
+    </a>
+    <p>$2,200/night – 5‑star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.marriott.com/en-us/hotels/nycxr-the-st-regis-new-york/overview/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.fourseasons.com/newyork/"><img
+        src="https://www.fourseasons.com/alt/img-opt/~65.1701.0,0000-156,2500-3000,0000-1687,5000/publish/content/dam/fourseasons/images/web/NYF/NYF_1731_original.jpg"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Four Seasons Hotel New York</h3>
+    </a>
+    <p>$2,300/night – 5‑star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.fourseasons.com/newyork/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.fourseasons.com/jacksonhole/"> <img
+        src="https://www.fourseasons.com/alt/img-opt/~80.1860.0,0000-234,2536-3000,0000-1687,5000/publish/content/dam/fourseasons/images/web/JAC/JAC_317_original.jpg"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Four Seasons Jackson Hole, Wyoming</h3>
+    </a>
+    <p> $570/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.fourseasons.com/jacksonhole/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.hilton.com/en/"><img
+        src="https://www.hilton.com/im/en/MADEMQQ/21063621/qq-madrid-4851-r4.jpg?impolicy=crop&cw=5000&ch=2127&gravity=NorthWest&xposition=0&yposition=17&rw=3000&rh=1286"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Waldorf Astoria New York</h3>
+    </a>
+    <p>$2,400/night – 5‑star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.hilton.com/en/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.broadmoor.com/"><img
+        src="https://d1iwe50und7qx1.cloudfront.net/broadmoor.com-2121435814/cms/cache/v2/61801b181ab92.jpg/1920x1080/fit;c:0,103,2000,1228/80/b9f0467a434f06b9f4768cf842bae2ab.webp"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>The Broadmoor, Colorado Springs</h3>
+    </a>
+    <p>$2,000+/night – 5‑star resort</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.broadmoor.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.thelittlenell.com/"><img
+        src="https://www.thelittlenell.com/-/media/thelittlenell/images/homepage-body-carousel/luxury-suites-summer-body-slide-1/2526_carousel_1.jpg?h=545&iar=0&w=1300&hash=FFD033DEE91AC4774CD2A6CC724A0F96"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>The Little Nell, Aspen</h3>
+    </a>
+    <p>$2,100/night – 5-star hotel</p>
+    <p>Gourmet Dining, Ski Concierge, Scenic Rooms</p>
+    <a href="https://www.thelittlenell.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://thesetaihotels.com/en/"> <img
+        src="https://thesetaihotels.com/wp-content/uploads/2023/03/The-Setai-Miami-001.jpg" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>The Setai, Miami Beach</h3>
+    </a>
+    <p>$2,100/night – 5-star hotel</p>
+    <p>Oceanfront, Art-Deco Luxury, Spa</p>
+    <a href="https://thesetaihotels.com/en/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.aman.com/resorts/amangiri"> <img
+        src="https://www.aman.com/sites/default/files/2025-05/amangiri_utah_-_lake_powell_boat_experience.jpg">
+      <div class="hotel-info">
+        <h3> Amangiri, Utah</h3>
+    </a>
+    <p>$3,500+/night – 5-star desert luxury retreat</p>
+    <p>Secluded Canyons, Infinity Pool, Stargazing</p>
+    <a href="https://www.aman.com/resorts/amangiri" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.peninsula.com/en/chicago/5-star-luxury-hotel-downtown-chicago"> <img
+        src="https://www.peninsula.com/-/media/chicago-new-homepage/exterior-web-hero-photo.jpg" alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>The Peninsula Chicago, Illinois</h3>
+    </a>
+    <p>$2,150/night – 5-star hotel</p>
+    <p>Rooftop bar with skyline views, Spa, Fine Dining</p>
+    <a href="https://www.peninsula.com/en/chicago/5-star-luxury-hotel-downtown-chicago" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://postranchinn.com/"><img
+        src="https://postranchinn.com/wp-content/uploads/2023/09/Post_House_800x528.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Post Ranch Inn, Big Sur, California</h3>
+    </a>
+    <p>$1,875/night – 5-star eco-luxury resort</p>
+    <p>Ocean & mountain views, Organic cuisine, Spa</p>
+    <a href="https://postranchinn.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.langhamhotels.com/en/the-langham/boston/"><img
+        src="https://assets.langhamhotels.com/is/image/langhamhotelsstage/tlbos-deluxe-parkview-king:Medium?wid=1013&hei=569"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>The Langham, Boston, Massachusetts</h3>
+    </a>
+    <p>$2,100/night – 5-star hotel</p>
+    <p>Historic building, central downtown location, elegant dining</p>
+    <a href="https://www.langhamhotels.com/en/the-langham/boston/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.fourseasons.com/chicago/photos-and-videos/"></a><img
+      src="https://www.fourseasons.com/alt/img-opt/~80.1860.0,0000-296,4096-3000,0000-1687,5000/publish/content/dam/fourseasons/images/web/CFS/CFS_2107_original.jpg"
+      alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Four Seasons Hotel Chicago, Illinois </h3></a>
+      <p>$2,300+/night – 5-star hotel</p>
+      <p>Lake Michigan views, rooftop spa pool, Magnificent Mile location</p>
+      <a href="https://www.fourseasons.com/chicago/photos-and-videos/" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.aman.com/resorts/amangiri"><img
+        src="https://www.aman.com/sites/default/files/2023-12/amangiri_usa_-_exterior_main_swimming_pool.jpg"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Amangiri, Canyon Point, Utah</h3>
+    </a>
+    <p>$1,900+/night – 5-star desert resort</p>
+    <p>Minimalist architecture, Spa, Outdoor adventure</p>
+    <a href="https://www.aman.com/resorts/amangiri" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.1hotels.com/seattle"><img
+        src="https://cdn.bfldr.com/TU9NUD0C/at/bfjb8446pbkn9qvsccfjwp/1Hotel_Seattle_part_two_archField_house_225V1.jpg?format=jpg&auto=webp&drupal-image-style=card&width=800&height=600&precrop=3204%2C2403%2Cx200%2Cy0%2Csafe&h=1116cd87&itok=cGBYFGe4">
+      <div class="hotel-info">
+        <h3>Hotel Seattle, Washington</h3>
+    </a>
+    <p>$350–$500/night – 5-star urban eco-luxury hotel</p>
+    <p>Nature-inspired design, Sustainable amenities, Rooftop patio & Drift bar </p>
+    <a href="https://www.1hotels.com/seattle" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.omnihotels.com/hotels/pga-frisco"><img
+        src="https://www.omnihotels.com/-/media/images/hotels/dalpga/digex/carousel/dalpga-exterior-edit-sunset-2800x1180.jpg?mw=1980&hash=4BEF68D4E1CCED284C900140E4A09DD0EC9699A8"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Omni PGA Frisco Resort & Spa, Texas</h3>
+    </a>
+    <p>$400–$600/night – 5-star golf resort hotel</p>
+    <p>Championship golf, Multiple restaurants & bars, Spa & driving range </p>
+    <a href="https://www.omnihotels.com/hotels/pga-frisco" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.oneandonlyresorts.com/moonlight-basin"><img
+        src="https://assets.kerzner.com/api/public/content/fb1e2d2e77264c91b251f3755e8ec97d?v=ea03ab8b&t=w992"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>One&Only Moonlight Basin, Montana</h3>
+    </a>
+    <p>$700–$1,000+/night – 5-star mountain luxury resort</p>
+    <p>Ski-in/ski-out gondola access, Wellness lodge, Forest-to-plate dining </p>
+    <a href="https://www.oneandonlyresorts.com/moonlight-basin" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://populusdenver.com/"><img
+        src="https://populusdenver.com/app/uploads/2024/07/Populus_MountainStudio_AmandaProudfit_001-2048x1366.jpg"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Populus, Denver, Colorado</h3>
+    </a>
+    <p>$300–$400/night – 5-star sustainable urban hotel</p>
+    <p>Carbon-positive design, Biophilic interiors, Rooftop restaurant Pasque </p>
+    <a href="https://populusdenver.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.hoteldive.com/news/top-hotel-openings-q1-2025/745914/"><img
+        src="https://imgproxy.divecdn.com/tdx4rOda70UajnYcdSV83NiZrHG9WQz7rIWTqykrZ2M/g:ce/rs:fill:1200:675:1/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS9JQ19JTkRfRXh0ZXJpb3JfMDQ3Yi5qcGc=.webp"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>The Baby Grand, Coronado, Californias</h3>
+    </a>
+    <p>$300–$400/night – 5‑star boutique hotel</p>
+    <p>Playful maximalist interiors, Coastal proximity to San Diego, Unique mosaic & jungle-themed restaurants </p>
+    <a href="https://www.hoteldive.com/news/top-hotel-openings-q1-2025/745914/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.justluxe.com/travel/hotel/feature-1979316.php"><img
+        src="https://cdn.justluxe.com/articles/galleries/135891.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>The Vineta Hotel, Palm Beach, Florida (Oetker Collection)</h3>
+    </a>
+    <p>$1,200–$2,000/night – 5‑star European-style luxury</p>
+    <p>Historic Cocoanut Row landmark, Four dining & social venues, Walkable to beach & Worth Avenue shopping </p>
+    <a href="https://www.justluxe.com/travel/hotel/feature-1979316.php" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <!-- Add 18 more hotel cards here -->
+
+  </div>
+
+
+  <div class="hero-container">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source
+        src="https://media.istockphoto.com/id/2120055196/video/time-lapse-crowd-of-tourist-walking-and-crossing-road-at-times-square-bustling-destination-in.mp4?s=mp4-640x640-is&k=20&c=GpB5eTfqsz_sekDa7coygzwnUZBo7XTwxVljqVSyyuU="
+        type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Contact Section -->
+  <!-- <section id="contact" style="padding:50px; background:#f9f9f9;">
+    <div class="form-container">
+      <h2>📩 Contact Us</h2>
+      <form id="contactForm" method="POST" action="sendmail.php">
+        <div class="input-group">
+          <input type="text" name="name" id="name" required>
+          <label for="name">Your Name</label>
+        </div>
+        <div class="input-group">
+          <input type="email" name="email" id="email" required>
+          <label for="email">Your Email</label>
+        </div>
+        <div class="input-group">
+          <textarea name="message" id="message" rows="5" required></textarea>
+          <label for="message">Your Message</label>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="response"></p>
+    </div>
+    <script src="script.js"></script>
+
+    </div>
+  </section> -->
+
+
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+  <script>
+
+
+
+    function applyFilters() {
+      const duration = document.getElementById("durationFilter").value;
+      const price = document.getElementById("priceFilter").value;
+      const rating = document.getElementById("ratingFilter").value;
+      const search = document.getElementById("searchFilter").value.toLowerCase();
+
+      const cards = document.querySelectorAll(".place-card");
+
+      cards.forEach(card => {
+        const nameText = card.querySelector("h3")?.innerText.toLowerCase() || "";
+        const durationText = card.querySelector(".info")?.innerText || "";
+        const priceText = card.querySelector(".price")?.innerText.replace(/[^\d]/g, "") || "0";
+        const ratingText = card.querySelector(".rating")?.innerText || "";
+
+        let show = true;
+
+        // Duration filter
+        if (duration === "short" && !durationText.includes("min")) show = false;
+        if (duration === "medium" && !(durationText.includes("1h") || durationText.includes("2h") || durationText.includes("3h"))) show = false;
+        if (duration === "long" && (durationText.includes("30") || durationText.includes("45") || durationText.includes("min"))) show = false;
+
+        // Price filter
+        const priceValue = parseInt(priceText, 10);
+        if (price === "low" && priceValue >= 50) show = false;
+        if (price === "mid" && (priceValue < 50 || priceValue > 150)) show = false;
+        if (price === "high" && priceValue <= 150) show = false;
+
+        // Rating filter
+        if (rating) {
+          const ratingNum = (ratingText.match(/★/g) || []).length;
+          if (ratingNum < parseInt(rating)) show = false;
+        }
+
+        // Search filter
+        if (search && !nameText.includes(search)) show = false;
+
+        card.style.display = show ? "block" : "none";
+      });
+    }
+
+    function resetFilters() {
+      document.getElementById("durationFilter").value = "";
+      document.getElementById("priceFilter").value = "";
+      document.getElementById("ratingFilter").value = "";
+      document.getElementById("searchFilter").value = "";
+      document.querySelectorAll(".place-card").forEach(card => {
+        card.style.display = "block";
+      });
+    }
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+
+        const left = (currentIndex - 1 + slides.length) % slides.length;
+        const center = currentIndex;
+        const right = (currentIndex + 1) % slides.length;
+
+        if (index === left || index === center || index === right) {
+          slide.style.display = 'block';
+        }
+
+        if (index === center) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
+    setInterval(nextSlide, 4000); // auto-slide
+
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // gap included
+      carousel.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleReadMore() {
+      const dots = document.getElementById("dots");
+      const more = document.getElementById("more");
+      const btn = document.getElementById("readMoreBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        more.style.display = "none";
+        btn.textContent = "Read more";
+      } else {
+        dots.style.display = "none";
+        more.style.display = "inline";
+        btn.textContent = "Read less";
+      }
+    }
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // prevent page reload
+
+      let formData = new FormData(this);
+
+      fetch("sendmail.php", {
+        method: "POST",
+        body: formData
+      })
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("response").innerHTML = data;
+          document.getElementById("contactForm").reset();
+        })
+        .catch(error => {
+          document.getElementById("response").innerHTML = "❌ Error sending message.";
+        });
+    });
+
+
+
+
+  </script>
+
+
+
+  <footer class="footer">
+    <div class="overlay"></div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>More details</h3>
+
+      </div>
+
+
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: farhanalikolachi014@gmail.com</p>
+        <p>Phone: +92 313 0230246</p>
+        <div class="social-icons">
+          <a href="https://wa.me/+923130230246"><img
+              src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c99945a2.jpg"></a>
+          <a href="https://www.instagram.com/notyour_farhu/"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmw5rkDKJDFiG1OS5G_L7P-B6CDHGEk88VZw&s"></a>
+          <a href="https://www.facebook.com/profile.php?id=61554707979064"><img
+              src="https://img.freepik.com/premium-psd/facebook-logo-blue-circle_705838-12823.jpg?semt=ais_hybrid&w=740&q=80"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © Is it possible to explore all of USA in 2025 on a low budget?
+    </div>
+  </footer>
+
+</body>
+
+</html>

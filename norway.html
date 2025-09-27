@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>NORWAY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://www.shutterstock.com/shutterstock/videos/3433690859/thumb/1.jpg?ip=x480');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      /* overflow: hidden; */
+      position: relative;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .custom-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 250px;
+      opacity: 0.5;
+      transition: transform 0.5s, opacity 0.5s;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border: 3px solid transparent;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide.active {
+      transform: scale(1.2);
+      opacity: 1;
+      border: 3px solid yellow;
+
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    header {
+      text-align: center;
+            margin-top: 35px;
+      padding: 20px;
+      font-size: 32px;
+      background-image: url('');
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 28px;
+      color: #00ffc8;
+    }
+
+    .places-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .place-card {
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .place-body {
+      padding: 15px;
+    }
+
+    .place-body h3 {
+      font-size: 18px;
+      color: #00ffcc;
+      margin: 0 0 10px;
+    }
+
+    .place-body .rating,
+    .place-body .info,
+    .place-body .price {
+      font-size: 14px;
+      color: #ccc;
+      margin: 4px 0;
+    }
+
+    .reserve-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .reserve-btn:hover {
+      background: #00ccaa;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      border: none;
+      color: black;
+      font-weight: bold;
+      margin: 0 10px;
+      border-radius: 10px;
+    }
+
+    .controls button:hover {
+      background-color: #00aacc;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00d9ff;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 20px;
+      color: #004d00;
+      font-weight: bold;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .rating {
+      color: green;
+      margin: 5px 0;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #004d00;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .nav-left {
+      left: -20px;
+    }
+
+    .nav-right {
+      right: -20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none;
+      }
+
+      .card {
+        flex: 0 0 80%;
+      }
+    }
+
+    h2 {
+      padding: 20px;
+      color: #ffffff;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0 20px 20px;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      scroll-snap-align: start;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #004d00;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .rating {
+      color: green;
+      font-size: 14px;
+    }
+
+    .info {
+      color: #555;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+      margin: 10px 0;
+    }
+
+    .reserve-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #00e64d;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .reserve-btn:hover {
+      background-color: #00cc44;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+
+    .trip-check-wrapper {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      /* Adjust height as needed */
+      margin-top: 60px;
+      /* top margin */
+      overflow: hidden;
+    }
+
+    .trip-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      /* FULL opacity */
+      z-index: 1;
+    }
+
+    .trip-check-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      /* optional for readability */
+    }
+
+    .trip-check-content h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .trip-check-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .trip-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .trip-btn {
+      padding: 10px 25px;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .trip-btn:hover {
+      background-color: rgb(0, 0, 0);
+    }
+
+
+    .area-section {
+      width: 100%;
+      margin-top: 50px;
+      padding: 40px 20px;
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://www.shutterstock.com/shutterstock/videos/3433690859/thumb/1.jpg?ip=x480');
+    }
+
+    .area-container {
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1300px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .area-left {
+      flex: 1 1 60%;
+      min-width: 300px;
+    }
+
+    .area-left h3 {
+      color: #ffffff;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .area-link {
+      font-weight: bold;
+      color: #004e7c;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .area-left h4 {
+      color: #ffffff;
+      margin: 10px 0;
+    }
+
+    #desc {
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    #readMoreBtn {
+      background: none;
+      color: #0077aa;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .contact-links a {
+      color: #0077aa;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .nearby {
+      margin-top: 30px;
+    }
+
+    .nearby-section {
+      display: flex;
+      gap: 30px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nearby-section ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .nearby-section li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .nearby-section li img {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+
+    .area-map {
+      flex: 1 1 35%;
+      min-width: 300px;
+    }
+
+    .area-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .footer-promo-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      font-family: sans-serif;
+      max-width: 1600px;
+      /* margin: 30px auto 0; */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-promo-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .promo-icon svg {
+      width: 58px;
+      height: 28px;
+      stroke: #000000;
+    }
+
+    .promo-text strong {
+      color: #000;
+      font-size: 16px;
+      display: block;
+    }
+
+    .promo-subtext {
+      color: #000;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .promo-arrow svg {
+      stroke: #000000;
+      width: 20px;
+      height: 20px;
+    }
+
+    .hero-container {
+      margin-top: 50px;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    video.background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5%;
+      color: #fff;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      /* Optional dark overlay for readability */
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .hero-btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+
+    header {
+      background: #004e7c;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .hero-carousel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hotel-grid {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .hotel-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-card h3 {
+      margin: 0.75rem;
+    }
+
+    .hotel-card .location {
+      margin: 0 0.75rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .hotel-card .desc {
+      margin: 0.5rem 0.75rem 1rem;
+      flex-grow: 1;
+    }
+
+    .hotel-card .btn {
+      background: #00aacc;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.75rem;
+      margin: 0.75rem;
+      border-radius: 4px;
+    }
+
+    .hotel-card .btn:hover {
+      background: #0088aa;
+    }
+
+    .map-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .map-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+
+
+
+    header {
+      background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+        url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 4px solid #00ffd0;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .hotel-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hotel-info h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #00ffcc;
+    }
+
+    .hotel-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .book-btn {
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .book-btn:hover {
+      background: #00ffcc;
+      color: #121212;
+    }
+
+
+    .footer {
+      background-image: url('4.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer {
+
+      position: relative;
+      background-image: url('https://www.shutterstock.com/shutterstock/videos/3433690859/thumb/1.jpg?ip=x480');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 20px 30px;
+    }
+
+    .footer .overlay {
+      margin-top: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer-section p,
+    .footer-section ul li {
+      font-size: 14px;
+      color: #cccccc;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: #cccccc;
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: #ffffff;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #cccccc;
+    }
+
+    .social-icons a img {
+      height: 25px;
+    }
+
+    .social-icons a:hover {
+      color: #00acee;
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #aaaaaa;
+    }
+    .filter-container {
+  display: flex;
+  gap: 12px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-container select,
+.filter-container input,
+.filter-container button {
+  padding: 8px 12px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-container button:hover {
+  background-color: #222;
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <h2>Welcome To Norway</h2>
+
+  <div class="carousel-wrapper">
+    <div class="custom-carousel" id="customCarousel">
+      <!-- 10 Images -->
+      <div class="carousel-slide active"><img
+          src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcT8yknCG7amKpeM7GHB8Hzmi2qIQDYYWQ0p_VBrAV8HSUyUy6BR3kbNzOP50KhiUkKKAhuy_qV8WRWhUBxC3Np4fdfx5XtP_cSAb0xgkJ0"
+          alt="1"></div>
+      <div class="carousel-slide"><img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4noRVXzwVUuUz4ructG_BAytFFGkGECkoaa0G0CRggfua8hYMdRurL4e3f5qpuqJHyTkAfnNmgqbGUYl5aFNk__mw0a00ep_t_CY8r29drUuTSlqVQcnu8K01hAfYLsky7Abh_w=w810-h468-n-k-no"
+          alt="2"></div>
+      <div class="carousel-slide"><img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqFxWLK33x18SANkUIRlmdYx2b-6YowAFeeMhUW_c8IZHhMusJ8gi5-p5YH3XNYIymjXUDqfFjojen6DzkpGtdXW19P_c_XBtFuOpI1fiBskFfky6lQZHWeYSDuYC0B4-NN6p3IuQ=w810-h468-n-k-no"
+          alt="3"></div>
+      <div class="carousel-slide"><img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrxCbKHlBdn3UFZ_pyGv-kwlFDURhzMCpK9jRrbZhboJCUffXa6vTJ2ix6T1KtGCBiL37RgsYhFeSGx0npPB3jQDrclbJjdPl0Uu2QVUrVhOcI8IfflphnnooC0hvE4-lWCdhsfT-jY4k_p=w810-h468-n-k-no"
+          alt="4"></div>
+      <div class="carousel-slide"><img
+          src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSp7d-VGUwl8lHmrWpRjkSERKew2K3O1HuFXKpQxK-fLC3dQ-KQSYj6X8n02eqt1of7QnVsrEKfsT3DdVOmBvW-zFTLvYACe1ueGhBVUw"
+          alt="5"></div>
+      <div class="carousel-slide"><img
+          src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQUwJ_glJXBjcLPdZIogpD9VczlGKipP8RdwpKyqMnyuSaTFjV-86kWm8NDcS8JtzKNkZtrFoiujmyTSgW0clDXSA-8f0fdwQbBuF8MOw"
+          alt="6"></div>
+      <div class="carousel-slide"><img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npLVMx3be0FG8sQzMlyII8j6pHGre0uNZXwtJUATeLoFN1ny-4WH1yrJ8JXBdsaJuaFetq55E3HNQNW2wlp5H4YzhiKn3V7VUDhrGkzg5OUnl5ZpgENlavo6iA06BQRimyQBUQ=w810-h468-n-k-no"
+          alt="7"></div>
+      <div class="carousel-slide"><img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq8OXhxjs0YasKLuNBEvg70ptQfofmvaQPS3TsacSPjfKXvqRAAZ558z53m_LnO6iFy5q20YKseJBuhmbrj2qKJ0_Mxw36o2bV2GtxRLJ9cimKYSOxw5KE0lwlbLchSg8jC3Dtj=w810-h468-n-k-no"><img
+          src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcR-MlHXzoOXzVcs6JCjjGrYi5BA3tBLcW_0LCYqsPaSDt5OrWoe8H30h5YwLcQ1LDw7_nirV-3EybLz7aMgDSgh3lUfGBB4Py6lpsm2Jw"
+          alt="9"></div>
+      <div class="carousel-slide"><img
+          src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRpLTo7S_m8Zz2DShqLdn3l1gYbSd9YRrpN-owBsJiNmjScVcjErsVN-6u0bi3zbQb4DCul4HY5UDLe8p-LAoIMH2H_EPxDzwV59MVkkLY"
+          alt="10"></div>
+    </div>
+
+
+
+    <header>Best Places to Visit in Norway</header>
+    <h2>Top Attractions</h2>
+    <div class="filter-container">
+      <select id="durationFilter">
+        <option value="">All Durations</option>
+        <option value="short">0–1h</option>
+        <option value="medium">1–3h</option>
+        <option value="long">3h+</option>
+      </select>
+
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="low">Under $50</option>
+        <option value="mid">$50–$150</option>
+        <option value="high">Over $150</option>
+      </select>
+
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="5">★★★★★</option>
+        <option value="4">★★★★☆ & up</option>
+        <option value="3">★★★☆☆ & up</option>
+      </select>
+
+      <button onclick="applyFilters()">Apply</button>
+      <button onclick="resetFilters()">Reset</button>
+    </div>
+
+
+    <div class="places-container">
+
+      <div class="place-card">
+        <a href="https://visitlofoten.com/en/"><img
+            src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT_jC6Gq2yTSRRPLMhxPPO1M35RhVEkfpjNA3Xw3esRhG4LpAzdrPWCBF4zLhfS8ZWVzuX4iz6cxOi9UyY2ZIXxCm3eNzCDrGdf5XW3XQ"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>Lofoten</h3>
+          <div class="rating">★★★★☆ (43)</div>
+          <div class="info">Duration: 45–60 min | Free cancellation</div>
+          <div class="price">From $41</div>
+          <a href="https://visitlofoten.com/en/" class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.visitnorway.com/listings/rafting-in-valldal-the-adventure-valley/5939/"><img
+            src="https://assets.simpleviewcms.com/simpleview/image/fetch/c_fill,h_1080,w_1440/f_avif/q_65/https://res.cloudinary.com/djew0njor/image/upload/v1624879887/I48ZbdFWCLRQLNi_TlS_t.jpg?_a=BATCtdAA0"
+            alt="Tour 2"></a>
+        <div class="place-body">
+          <h3>Cistern Guided Tour</h3>
+          <div class="rating">★★★★★ (131)</div>
+          <div class="info">Duration: 30–45 min | Free cancellation</div>
+          <div class="price">From $45</div>
+          <a href="https://www.visitnorway.com/listings/rafting-in-valldal-the-adventure-valley/5939/"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.visitnorway.com/places-to-go/northern-norway/tromso/"><img
+            src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcS3gZy_jmGp4Ni9wnkjkth5iD9j55WCfETCcpdABbOftBZFSsTaTugAqxT16dExOA0c0pCtKFRUzwGwN_SyzTh4CF4NiB0TW-c3XVRydg"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>Topkapi & Hagia Sophia</h3>
+          <div class="rating">★★★☆☆ (12)</div>
+          <div class="info">Duration: 6h | Free cancellation</div>
+          <div class="price">From $220</div>
+          <a href="https://www.visitnorway.com/places-to-go/northern-norway/tromso/" class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a
+          href="https://eurocities.eu/cities/bergen/?gad_source=1&gad_campaignid=22520641585&gbraid=0AAAAApQ8GpT3RE2fyqiJFLldpvg7yaI4M&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGEWfEiWmc4fgfoEI9ZhejV0mgHjcD6od29InFDbqY9baHbDWc8ngNRoCRAoQAvD_BwE"><img
+            src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQ1g69nRYFYZIFRfk3mby3Xnx7tG-pveHnZCBKA2W80369LMN3Nvo9r6tvnbFyaDXhI7VhroJATnGHuXx84uQNtK2uLgFHOv1QHhAW4bg"
+            alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Hot Air Balloon Ride</h3>
+          <div class="rating">★★★★★ (305)</div>
+          <div class="info">Duration: 2h | Free cancellation</div>
+          <div class="price">From $180</div>
+          <a href="https://eurocities.eu/cities/bergen/?gad_source=1&gad_campaignid=22520641585&gbraid=0AAAAApQ8GpT3RE2fyqiJFLldpvg7yaI4M&gclid=CjwKCAjwwNbEBhBpEiwAFYLtGEWfEiWmc4fgfoEI9ZhejV0mgHjcD6od29InFDbqY9baHbDWc8ngNRoCRAoQAvD_BwE"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+      <div class="place-card">
+        <a
+          href="https://www.visitnorway.com/places-to-go/fjord-norway/ryfylke/the-lysefjord-area/hiking-to-preikestolen/"><img
+            src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQJ_7eaq7O9zaWBTcO1aq67FXIp5oV3ZssoqJExX968hoc-Rrcn1pFBRSJ8EPzaWtdLflEjnNH8YVkTKIWL-hnCcMqsqsd7Q3LQqhsjeUs"
+            alt="Tour 1"></a>
+        <div class="place-body">
+          <h3>Basilica Cistern Ticket</h3>
+          <div class="rating">★★★★☆ (43)</div>
+          <div class="info">Duration: 45–60 min | Free cancellation</div>
+          <div class="price">From $41</div>
+          <a href="https://www.visitnorway.com/places-to-go/fjord-norway/ryfylke/the-lysefjord-area/hiking-to-preikestolen/"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://en.visitsvalbard.com/"></a><img
+          src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQnEx5ydgxD7w50IU9kLNU_bAYXS9etB4j2XXBgpaxzJvt9MZoaPI2KL7DkpjPADNY0r-NsnMzoqnyUyqV6lYSGBV8OyKzIAmPXKSyUYg"
+          alt="Tour 2"></a>
+        <div class="place-body">
+          <h3>Cistern Guided Tour</h3>
+          <div class="rating">★★★★★ (131)</div>
+          <div class="info">Duration: 30–45 min | Free cancellation</div>
+          <div class="price">From $45</div>
+          <a href="https://en.visitsvalbard.com/" class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://www.visitnorway.com/places-to-go/fjord-norway/alesund-sunnmore/"><img
+            src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQCGTdp-pSGO60YsUfOUWmhrYE9Ogno3OjtNBylSVkoUp_HinT41eFFhzWOBVccQtdEBDEgCqnLuiWTxPyjKD6CFhYBDZyM-kYOHdCr-OI"
+            alt="Tour 3"></a>
+        <div class="place-body">
+          <h3>Hagia Sophia Grand Mosque</h3>
+          <div class="rating">★★★☆☆ (12)</div>
+          <div class="info">Duration: 6h | Free cancellation</div>
+          <div class="price">From $220</div>
+          <a href="https://www.visitnorway.com/places-to-go/fjord-norway/alesund-sunnmore/"
+            class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <div class="place-card">
+        <a href="https://jotunheimen.com/"><img
+            src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSQxvu0FqZ8MarArs4Q7x-FpwFTndNOp0rprcWBFSXb5_dNyE0HZdRacLFd7UaMlJgPaRAgoFhiX9FaIzUGtI6BofNMPqgiVRyyQCuQXA"
+            alt="Tour 4"></a>
+        <div class="place-body">
+          <h3>Istanbul</h3>
+          <div class="rating">★★★★★ (305)</div>
+          <div class="info">Duration: 2h | Free cancellation</div>
+          <div class="price">From $180</div>
+          <a href="https://jotunheimen.com/" class="reserve-btn">Reserve</a>
+        </div>
+      </div>
+
+      <!-- Add more cards the same way if needed -->
+
+    </div>
+
+    <section class="trip-check-wrapper">
+      <video autoplay muted loop playsinline class="trip-bg-video">
+        <source src="https://videos.pexels.com/video-files/5700949/5700949-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="trip-check-content">
+        <h3>Are you currently on your trip?</h3>
+        <p>Help us find experiences available for you.</p>
+        <div class="trip-buttons">
+          <button class="trip-btn">Yes</button>
+          <button class="trip-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="area-section">
+      <div class="area-container">
+
+        <!-- LEFT CONTENT -->
+        <div class="area-left">
+          <h3>The area</h3>
+          <a href="#" class="area-link">Alemdar Mahallesi, Yerebatan Caddesi, No:1/3, Istanbul 34110 Türkiye</a>
+          <h4>Neighborhood: Sultanahmet</h4>
+          <p id="desc">
+            Norway,[a] officially the Kingdom of Norway,[b] is a Nordic country located on the Scandinavian Peninsula in
+            Northern Europe. The remote Arctic island of Jan Mayen and the archipelago of Svalbard also form part of the
+            Kingdom of Norway.[note 5] Bouvet Island, located in the Subantarctic, is a dependency, and not a part of
+            the Kingdom;
+            <span id="dots">...</span><span id="more">
+              Norway also claims the Antarctic territories of Peter I Island and Queen Maud Land. Norway has a
+              population of 5.6 million. Its capital and largest city is Oslo. The country has a total area of 385,207
+              square kilometres (148,729 sq mi).[14] The country shares a long eastern border with Sweden, and is
+              bordered by Finland and Russia to the northeast. Norway has an extensive coastline facing the Skagerrak
+              strait, the North Atlantic Ocean, and the Barents Sea.
+
+              The unified kingdom of Norway was established in 872 as a merger of petty kingdoms and has existed
+              continuously for 1,152–1,153 years. From 1537 to 1814, Norway was part of Denmark–Norway, and, from 1814
+              to 1905, it was in a personal union with Sweden. Norway was neutral during the First World War, and in the
+              Second World War until April 1940 when it was invaded and occupied by Nazi Germany until the end of the
+              war.
+            </span>
+          </p>
+          <button onclick="toggleReadMore()" id="readMoreBtn">Read more</button>
+
+          <div class="contact-links">
+            <a href="#">Visit website</a> | <a href="#">Call</a>
+          </div>
+
+          <div class="nearby">
+            <h4>Best nearby</h4>
+            <div class="nearby-section">
+              <div>
+                <strong>Restaurants</strong><br />
+                <span>5,112 within 3 miles</span>
+                <ul>
+                  <li><a href="https://www.visitnorway.com/places-to-go/fjord-norway/the-hardangerfjord-region/"><img
+                        src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRMMen5CjOKiDAoSkmeKNui3VzaGTL2JN0azIdWQMuFGHAZnGoCgTIAs9KXcoIkTGUYlf3MrWyKmpy-FajTX4qEzyfD-AInNOFMz0qEEw"
+                        alt=""></a> Hardangerfjord...</li>
+                  <li><a href="https://www.trolltunga.com/en"><img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr_LsjiN9qXxLJKPePXQRgDX6O8iWgN-D9s1IxdHlga0nqYGGO8-pSxvYWs08e1XZYL9isHGSNjA56nywJReTPHyH62P8SMvm9Z9W5p0AWK-Z4GczBNp_2yWLpC2VidVRVYcG0=w810-h468-n-k-no"
+                        alt=""></a> Trolltunga</li>
+                  <li><a href="https://www.visitnorway.com/listings/the-unesco-n%C3%A6r%C3%B8yfjord/12020/"><img
+                        src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbGomNpIrCImVGWrWpNMaKG6D9i35wr8lLK8Kxs2Xh5sdtJaSy54TjKVphCSRrNuXOPTOL8I9xpqlS381Li3JElPbkIPi2rPv1ooyvqTWU1GSEHPjRu4EPuy5NZxXEHN3B1bs=w810-h468-n-k-no"
+                        alt=""></a> Nærøyfjord</li>
+                </ul>
+              </div>
+              <div>
+                <strong>Attractions</strong><br />
+                <span>1,226 within 6 miles</span>
+                <ul>
+                  <li><a
+                      href="https://www.visitnorway.com/places-to-go/fjord-norway/the-hardangerfjord-region/listings-hardanger-fjord/v%C3%B8ringsfossen/158463/"><img
+                        src="https://assets.simpleviewcms.com/simpleview/image/fetch/c_fill,h_1080,w_1920/f_jpg/q_65/https://media.newmindmedia.com/TellUs/image/%3Ffile%3DV_ringsfossen_av_Heidi_Kvamsdal_4_1073091276.jpg&dh%3D534&dw%3D800&t%3D4"
+                        alt=""></a> Vøringsfossen</li>
+                  <li><a href="https://kjerag.info/"><img
+                        src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT_WvUMSShoBUpX85_seLS7GzgKV9wHh0pDVNbVyK449allVYtYvaUTFAAYQkgjCu04T7W5YMwwNMWhhfwUG6g_L2mzx-g-Eit1NCBEDA"
+                        alt=""></a> Kjeragbolten</li>
+                  <li><a href="https://www.visitnorway.com/places-to-go/northern-norway/the-north-cape/"><img
+                        src="data:image/jpeg;base64,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"
+                        alt=""></a> Nordkapp (North Cape)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT MAP -->
+        <div class="area-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14799955.67159133!2d-2.91654423772667!3d63.07579605274072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x461268458f4de5bf%3A0xa1b03b9db864d02b!2sNorway!5e0!3m2!1sen!2s!4v1755525721732!5m2!1sen!2s"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="footer-promo-box">
+          <div class="footer-promo-content">
+            <div class="promo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#002E1A"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0Z" />
+                <circle cx="12" cy="10" r="3" />
+                <path d="m3 3 2 2" />
+              </svg>
+            </div>
+            <div class="promo-text">
+              <strong>Find things to do near Basilica Cistern</strong>
+              <div class="promo-subtext">Sights, experiences, and restaurants picked just for you.</div>
+            </div>
+          </div>
+          <div class="promo-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#002E1A" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l9-9-9-9" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+    <div class="hero-container">
+      <video class="background-video" autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/6128448/6128448-hd_1920_1080_30fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="hero-content">
+        <h1>Explore The Norway</h1>
+        <p>Norway is a Scandinavian country encompassing mountains, glaciers and deep coastal fjords.</p>
+        <button class="hero-btn"><a
+            href="https://www.nobelpeacecenter.org/en?https://www.nobelpeacecenter.org/en&gad_source=1&gad_campaignid=21403026444&gbraid=0AAAAA95fjlomuWBp0dfEmxMgbS55-wJce&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mBTwfC_Wi08HN9TwIfCKgcVT6tFHETbpV8jPr0d0p-4gRKyZeukhTUaAsDXEALw_wcB">Plan
+            your trip</a></button>
+      </div>
+    </div>
+
+
+    <header>BEST HOTEL IN NORWAY</header>
+
+    <div class="container">
+
+      <div class="hotel-card">
+        <a
+          href="https://thethief.com/en?gad_source=1&gad_campaignid=22202865562&gbraid=0AAAAADvtnzKbmpxLCWLcHU9VsaFIsqs9h&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfywPl9_umfcXc9kq0LkESFwGuhn0gPhbtT3JDvVdu4PHBt0SdnjrTIaAjekEALw_wcB"><img
+            src="https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,h_1200,q_75,w_1200/https://media.newmindmedia.com/TellUs/image/%3Ffile%3DE8188F42140000F4533EC7096FC9D396D4E2D7AD.jpg%26dh%3D533%26dw%3D800%26t%3D4"
+            alt="Hotel 1">
+          <div class="hotel-info">
+            <h3>The Thief — Oslo </h3>
+        </a>
+        <p>$2,127/night – 5-star hotel</p>
+        <p>Free Wi-Fi, Great Views</p>
+        <a href="https://thethief.com/en?gad_source=1&gad_campaignid=22202865562&gbraid=0AAAAADvtnzKbmpxLCWLcHU9VsaFIsqs9h&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfywPl9_umfcXc9kq0LkESFwGuhn0gPhbtT3JDvVdu4PHBt0SdnjrTIaAjekEALw_wcB"
+          class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <a
+        href="https://www.arcticoceanlodge.com/?gad_source=1&gad_campaignid=22755011908&gbraid=0AAAAA-9Bkl7Wi-m7F5Yc7nKkBCc4DtCBl&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxmene842goKIFObZ27hN8UL7d5bC8q3ZsEzBAvU62SU049my40CuMaAqj3EALw_wcB">
+        <img
+          src="https://www.visittelemark.com/imageresizer/?image=%2Fdmsimgs%2Fkveldsstemmning-Dalen-Hotel_1880555156.jpg&action=ProductDetailProFullWidth"
+          alt="Hotel 2">
+        <div class="hotel-info">
+          <h3>Dalen Hotel — Dalen, Telemark</h3>
+      </a>
+      <p>$2,000/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.arcticoceanlodge.com/?gad_source=1&gad_campaignid=22755011908&gbraid=0AAAAA-9Bkl7Wi-m7F5Yc7nKkBCc4DtCBl&gclid=Cj0KCQjwqebEBhD9ARIsAFZMbfxmene842goKIFObZ27hN8UL7d5bC8q3ZsEzBAvU62SU049my40CuMaAqj3EALw_wcB"
+        class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.otelz.com/en/hotel/lujo-bodrum"><img
+        src="https://dailyscandinavian.com/wp-content/uploads/2016/07/180716-from-juvet-landscape-hotel-norway-7.jpg"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Juvet Landscape Hotel — Valldal (near Sunnmøre Alps)</h3>
+    </a>
+    <p>$1,222/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.juvet.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://grand.no/"><img
+        src="https://lh3.googleusercontent.com/p/AF1QipMec-FqEyx4A2MdIX7Up6J8d8C_jhmeLg6oiOep=w324-h312-n-k-no"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Hotel Continental</h3>
+    </a>
+    <p>$1,300/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://grand.no/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://thebristolwing.co.uk/?gad_source=1&gad_campaignid=19646723743&gbraid=0AAAAApPDxiOQ_0kj5GUNXYMPO_M1bpbDV&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJS9Jh9yi4avKdAVXI84idEEAhSgf66UT0Z2LEblhfy7CR_GfJi9eA8aAt4EEALw_wcB">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh5EKC7RpwTPpEzkpDt7mbfYaTJFMDmCB8BItzQSlXdHwfH9h7d_YD2TTidd63209Kqg8&usqp=CAU"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Bristol Belgrade</h3>
+    </a>
+    <p> $570/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://thebristolwing.co.uk/?gad_source=1&gad_campaignid=19646723743&gbraid=0AAAAApPDxiOQ_0kj5GUNXYMPO_M1bpbDV&gclid=Cj0KCQjwzOvEBhDVARIsADHfJJS9Jh9yi4avKdAVXI84idEEAhSgf66UT0Z2LEblhfy7CR_GfJi9eA8aAt4EEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://clarion-havnekontoret.hotel-rez.com/"><img
+        src="https://d19lgisewk9l6l.cloudfront.net/assetbank/Clarion_Collection_Havnekontoret_Bergen_102682.jpg"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Clarion Collection Hotel Havnekontoret</h3>
+    </a>
+    <p>$450–$800/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://clarion-havnekontoret.hotel-rez.com/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://bergenharbourhotel.no/en/?utm_source=google&utm_medium=annonse&utm_campaign=bergen%20harbour%20hotel%20sok%20-%20global%20-%20hotel%20bergen%20norway%20-%20sok&mtm_campaign=google%20-%20annonse%20bergen%20harbour%20hotel%20sok%20-%20global%20hotel%20bergen%20norway&gad_source=1&gad_campaignid=21815682440&gbraid=0AAAAA-XvBnsN1IJyRNb0__X3qnvvnfxCK&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mCjIRVGNJL9kRsIaZ2B3mFFUHXUO4HhihWCISLsWaoKi_KiZYmgQzUaAlgyEALw_wcB"><img
+        src="https://lh3.googleusercontent.com/gps-proxy/ALd4DhFjU7PnwMaLm4hQMKErrJo6Pvdo9OUlQ5nrhKvHS2r1GILOhhDcoonS1FHjoDWNRspSlMVqgX_VDT-Hh0qNVKlHQzVsHmIT1MWSiF9m2tdpU1LcsJs_Dw9CpU1VYVa5_k7SEdt4Yw8x6P4HWewypnwCVuNoSPvNxy6tOpEKYD_9-XACgxRpxEHrHQ=w324-h312-n-k-no"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3> Opus XVI</h3>
+    </a>
+    <p>$300–$700/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://bergenharbourhotel.no/en/?utm_source=google&utm_medium=annonse&utm_campaign=bergen%20harbour%20hotel%20sok%20-%20global%20-%20hotel%20bergen%20norway%20-%20sok&mtm_campaign=google%20-%20annonse%20bergen%20harbour%20hotel%20sok%20-%20global%20hotel%20bergen%20norway&gad_source=1&gad_campaignid=21815682440&gbraid=0AAAAA-XvBnsN1IJyRNb0__X3qnvvnfxCK&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mCjIRVGNJL9kRsIaZ2B3mFFUHXUO4HhihWCISLsWaoKi_KiZYmgQzUaAlgyEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://en.dethanseatiskehotel.no/?sjrncid=GA_10962867116&sjrnaid=GA_595000084706&gclsrc=aw.ds&gad_source=1&gad_campaignid=10962867116&gbraid=0AAAAAClQQRqe-TBnlKrwc5p3YxnnC3Tsy&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mB2LKbXvlaE-JYz10C59RAKPXUPPGL3OWAj9vzW8lDXnz7PmCu3uD4aAlaREALw_wcB"><img
+        src="https://media-cdn.tripadvisor.com/media/photo-s/06/a5/a9/29/det-hanseatiske-hotell.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Det Hanseatiske Hotel</h3>
+    </a>
+    <p>$400–$650/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://en.dethanseatiskehotel.no/?sjrncid=GA_10962867116&sjrnaid=GA_595000084706&gclsrc=aw.ds&gad_source=1&gad_campaignid=10962867116&gbraid=0AAAAAClQQRqe-TBnlKrwc5p3YxnnC3Tsy&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mB2LKbXvlaE-JYz10C59RAKPXUPPGL3OWAj9vzW8lDXnz7PmCu3uD4aAlaREALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://www.skaarungen.no/spa?gad_source=1&gad_campaignid=20273793571&gbraid=0AAAAAoYO-MeUF2OiObr0rCilaLiDyUfNq&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mCoxCK1IcRbjAxsmsCPmI8qhrbhwzPuidAAjFU-BH35c0ZEsCnDyC4aAuRsEALw_wcB">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfoWmeEmbNhYzS0wt1tv1JFeK6rXPtdqnrqQ&s"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Walaker Hotel</h3>
+    </a>
+    <p>$350–$600/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.skaarungen.no/spa?gad_source=1&gad_campaignid=20273793571&gbraid=0AAAAAoYO-MeUF2OiObr0rCilaLiDyUfNq&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mCoxCK1IcRbjAxsmsCPmI8qhrbhwzPuidAAjFU-BH35c0ZEsCnDyC4aAuRsEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.dalenhotel.no/en?gad_source=1&gad_campaignid=22833992822&gbraid=0AAAAA-z3qt0EZKTl6lWAiinxCLTrsgiUY&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mDo0D12cnDoRBgq4yrTKLuOwF3GiAPFcptrQS34yzWLBSvDyoVPKM4aAlQpEALw_wcB">
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/7d/ba/23/hotel-exterior-at-night.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3> Dalen Hote</h3>
+    </a>
+    <p>600–$1,200/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.dalenhotel.no/en?gad_source=1&gad_campaignid=22833992822&gbraid=0AAAAA-z3qt0EZKTl6lWAiinxCLTrsgiUY&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mDo0D12cnDoRBgq4yrTKLuOwF3GiAPFcptrQS34yzWLBSvDyoVPKM4aAlQpEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://www.hotelnordbo.gl/en/?utm_source=google&utm_medium=cpc&utm_campaign=stay+in+nuuk&gad_source=1&gad_campaignid=21399898253&gbraid=0AAAAAD4ZiAlZGPhsiBB4gCpI3xEAhA1DP&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAMNDAJHkGUZcjrbNdLliEb3ZDwo6cXVLziTiO_tN76Ej1Wzg1ZNgEaAs8JEALw_wcB">
+      <img
+        src="https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,h_1200,q_75,w_1200/https://media.newmindmedia.com/TellUs/image/%3Ffile%3DRefsnesGods01_2__2036649907.jpg%26dh%3D534%26dw%3D800%26t%3D4"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Hotell Refsnes Gods</h3>
+    </a>
+    <p>$400/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.hotelnordbo.gl/en/?utm_source=google&utm_medium=cpc&utm_campaign=stay+in+nuuk&gad_source=1&gad_campaignid=21399898253&gbraid=0AAAAAD4ZiAlZGPhsiBB4gCpI3xEAhA1DP&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAMNDAJHkGUZcjrbNdLliEb3ZDwo6cXVLziTiO_tN76Ej1Wzg1ZNgEaAs8JEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.hotelnordbo.gl/en/?utm_source=google&utm_medium=cpc&utm_campaign=stay+in+nuuk&gad_source=1&gad_campaignid=21399898253&gbraid=0AAAAAD4ZiAlZGPhsiBB4gCpI3xEAhA1DP&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAlctOGL_JNIQCTBUulAkpn0WvyG6JWgC68o7WtBrsqN7sv8CftfeAaAoMwEALw_wcB"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-VvKSelSKiRk819dTYOsTamtO4caSc1p9uw&s"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Juvet Landscape Hotel</h3>
+    </a>
+    <p>$450–$900/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.hotelnordbo.gl/en/?utm_source=google&utm_medium=cpc&utm_campaign=stay+in+nuuk&gad_source=1&gad_campaignid=21399898253&gbraid=0AAAAAD4ZiAlZGPhsiBB4gCpI3xEAhA1DP&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAlctOGL_JNIQCTBUulAkpn0WvyG6JWgC68o7WtBrsqN7sv8CftfeAaAoMwEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://storfjordhotel.com/en"><img
+        src="https://images.mrandmrssmith.com/images/767x288/4955018-storfjord-hotel-hotel-ovre-glomset-norway.jpg"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Storfjord Hotel</h3>
+    </a>
+    <p>$300–$500/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://storfjordhotel.com/en" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.booking.com/searchresults.en-gb.html?aid=311984&label=wood-bodo-S7kYBYO%2AG9rH14GDBrZc7AS697493590502%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-1730531817811%3Alp9075153%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXdX6HrtnYy-Ml68sH-ljtU&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mBVxQ9kqvbVPaEjtZcnPEvsfiLBwWTaqS5IKcz-UNG77b3oq6IuC84aAjAeEALw_wcB&highlighted_hotels=11427813&redirected=1&city=-253799&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"></a><img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pC3P16shYuX0McKGrwdt4xWuLsCakB9p3w&s" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Walaker Hotell</h3></a>
+      <p>$350–$700/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.booking.com/searchresults.en-gb.html?aid=311984&label=wood-bodo-S7kYBYO%2AG9rH14GDBrZc7AS697493590502%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-1730531817811%3Alp9075153%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXdX6HrtnYy-Ml68sH-ljtU&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mBVxQ9kqvbVPaEjtZcnPEvsfiLBwWTaqS5IKcz-UNG77b3oq6IuC84aAjAeEALw_wcB&highlighted_hotels=11427813&redirected=1&city=-253799&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"
+        class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://cf.bstatic.com/xdata/images/hotel/max1024x768/366180770.jpg?k=c6aa8904dd93c94f49178704f65b93de35740a1514a05aeaf776cf20574183e7&o=&hp=1"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAdU-vMfwLuAYnnW8mZ1DD7SGRZhJCMoPcsQ&s"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Sorrisniva Igloo Hotel</h3>
+    </a>
+    <p>$250–$500/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.borealadventuresailing.com/activities/sail-ski/?gad_source=1&gad_campaignid=21269315257&gbraid=0AAAAAoJBfRZj-t_UGi5ovsOl1w0CODYK5&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mB0xnaU8kRdvmtSh7Kqr_vIEdzODNIl2NgseNlcUGZFUr9RnUIKykkaAhmOEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.booking.com/searchresults.en-gb.html?aid=356980&label=gog235jc-10CAsoqgFCEmtpcmtlbmVzLXNub3dob3RlbEgzWANotQGIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4AtHbjMUGwAIB0gIkMzczZTJiOTItNTJmMi00N2Y0LTkxMTEtOGZlYjA1YTMxNTZi2AIB4AIB&highlighted_hotels=1194243&redirected=1&city=-265788&hlrd=user_sh&group_adults=2&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"><img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/366180770.jpg?k=c6aa8904dd93c94f49178704f65b93de35740a1514a05aeaf776cf20574183e7&o=&hp=1"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Snowhotel Kirkenes </h3>
+    </a>
+    <p>$300–$400/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.booking.com/searchresults.en-gb.html?aid=356980&label=gog235jc-10CAsoqgFCEmtpcmtlbmVzLXNub3dob3RlbEgzWANotQGIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4AtHbjMUGwAIB0gIkMzczZTJiOTItNTJmMi00N2Y0LTkxMTEtOGZlYjA1YTMxNTZi2AIB4AIB&highlighted_hotels=1194243&redirected=1&city=-265788&hlrd=user_sh&group_adults=2&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a
+      href="https://www.laxarbakki.is/?gad_source=1&gad_campaignid=16885719788&gbraid=0AAAAAC9I191WH7476u-VlIwm50ser9nPd&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mA_WakgfGcNacKCta7hR357oP2jN8gp1B7KYEPB1QGauV1ZV7rJdkQaAsbrEALw_wcB"><img
+        src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/212109924.jpg?k=442b080a00364e55c1091d0384a053d2d8f1ea59e01b76b144258586b3d732d4&o=&hp=1"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>Sommarøy Arctic Hotel Tromsø </h3>
+    </a>
+    <p>$200–$350/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.laxarbakki.is/?gad_source=1&gad_campaignid=16885719788&gbraid=0AAAAAC9I191WH7476u-VlIwm50ser9nPd&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mA_WakgfGcNacKCta7hR357oP2jN8gp1B7KYEPB1QGauV1ZV7rJdkQaAsbrEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.booking.com/searchresults.en-gb.html?aid=311984&label=aurora-canvas-dome-XPQva5wKNgwPDkHLTHuXmwS589414246489%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-664534857982%3Alp9075153%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXdX6HrtnYy-Ml68sH-ljtU&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAgckUpwvuCKf4X31C7T8QRllAYkkjWj13Z5Rb1iUH0qPpeH_W_nOwaAiDwEALw_wcB&highlighted_hotels=4063551&redirected=1&city=6168266&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"><img
+        src="https://img.directhotels.com/no/alta/alta-river-camping/1.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Alta River Camping</h3>
+    </a>
+    <p>$250–$450/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.booking.com/searchresults.en-gb.html?aid=311984&label=aurora-canvas-dome-XPQva5wKNgwPDkHLTHuXmwS589414246489%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-664534857982%3Alp9075153%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YXdX6HrtnYy-Ml68sH-ljtU&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAgckUpwvuCKf4X31C7T8QRllAYkkjWj13Z5Rb1iUH0qPpeH_W_nOwaAiDwEALw_wcB&highlighted_hotels=4063551&redirected=1&city=6168266&hlrd=no_dates&source=hotel&expand_sb=1&keep_landing=1&sid=5a4ac0d90b49731513d107be380b1b5d"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.visitnorway.com/listings/the-arctic-hideaway/218387/"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN6FMVSZ9-ANcc_Ql9HLUE0GPRg3caMLZo2g&s"
+        alt="Hotel 1">
+      <div class="hotel-info">
+        <h3>The Arctic Hideaway</h3>
+    </a>
+    <p>$400–$700/night – 5-star hotel</p>
+    <p>Free Wi-Fi, Great Views</p>
+    <a href="https://www.visitnorway.com/listings/the-arctic-hideaway/218387/" class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://seilnorge.no/tripcalendar/?utm_term=&utm_campaign=PMAX+%7C+GLOBAL&utm_source=adwords&utm_medium=ppc&hsa_acc=1573687271&hsa_cam=21789533468&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=21789536372&gbraid=0AAAAADoW61z1dwr7dXL4l2_FE3BCK7odi&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mC6skWzz_sr3yWDb77qK640kRPnakkZmSyPlzmJNuj1ldd15smGnSAaAh7zEALw_wcB"><img
+        src="https://www.hotelsinheaven.com/wp-content/uploads/2019/06/manshausen-island-resort-accommodation-bungalows.jpg"
+        alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Manshausen Island Resort</h3>
+    </a>
+    <p>$350–$600/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://seilnorge.no/tripcalendar/?utm_term=&utm_campaign=PMAX+%7C+GLOBAL&utm_source=adwords&utm_medium=ppc&hsa_acc=1573687271&hsa_cam=21789533468&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=21789536372&gbraid=0AAAAADoW61z1dwr7dXL4l2_FE3BCK7odi&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mC6skWzz_sr3yWDb77qK640kRPnakkZmSyPlzmJNuj1ldd15smGnSAaAh7zEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <div class="hotel-card">
+    <a
+      href="https://www.trivago.no/nb/oar/hotell-thon-hotel-kirkenes?search=100-1389430&sem_creativeid=600107715021&sem_network=g&sem_device=c&sem_target=&sem_adposition=&sem_campaignid=355790604&sem_adgroupid=24679278204&sem_targetid=dsa-60762789950&sem_location=9075153&cipc=sem&cip=471131&gad_source=1&gad_campaignid=355790604&gbraid=0AAAAAD6-gN_Gr9jzVndH_OMX58tswQg0V&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAo2ixeQRb9UaW5sTwRnC5Vb-T8jO3x0yfn0MCuppvIFs6k-IgL_A4aAr2XEALw_wcB"><img
+        src="https://media-cdn.tripadvisor.com/media/photo-s/0e/c8/8c/f4/thon-hotel-kirkenes.jpg" alt="Hotel 2">
+      <div class="hotel-info">
+        <h3>Thon Hotel Kirkenes </h3>
+    </a>
+    <p>$350–$600/night – 5-star hotel</p>
+    <p>Restaurant, Spa, Scenic Rooms</p>
+    <a href="https://www.trivago.no/nb/oar/hotell-thon-hotel-kirkenes?search=100-1389430&sem_creativeid=600107715021&sem_network=g&sem_device=c&sem_target=&sem_adposition=&sem_campaignid=355790604&sem_adgroupid=24679278204&sem_targetid=dsa-60762789950&sem_location=9075153&cipc=sem&cip=471131&gad_source=1&gad_campaignid=355790604&gbraid=0AAAAAD6-gN_Gr9jzVndH_OMX58tswQg0V&gclid=Cj0KCQjwnovFBhDnARIsAO4V7mAo2ixeQRb9UaW5sTwRnC5Vb-T8jO3x0yfn0MCuppvIFs6k-IgL_A4aAr2XEALw_wcB"
+      class="book-btn">Book Now</a>
+  </div>
+  </div>
+
+  <!-- Add 18 more hotel cards here -->
+
+  </div>
+
+
+  <div class="hero-container">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="https://videos.pexels.com/video-files/4440500/4440500-hd_1920_1080_30fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+
+  </div>
+
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+
+  <script>
+    function applyFilters() {
+      const duration = document.getElementById("durationFilter").value;
+      const price = document.getElementById("priceFilter").value;
+      const rating = document.getElementById("ratingFilter").value;
+
+      const cards = document.querySelectorAll(".place-card");
+
+      cards.forEach(card => {
+        const durationText = card.querySelector(".info")?.innerText || "";
+        const priceText = card.querySelector(".price")?.innerText.replace(/[^\d]/g, "") || "0";
+        const ratingText = card.querySelector(".rating")?.innerText || "";
+
+        let show = true;
+
+        // Duration filter
+        if (duration === "short" && !durationText.includes("min")) show = false;
+        if (duration === "medium" && !(durationText.includes("1h") || durationText.includes("2h") || durationText.includes("3h"))) show = false;
+        if (duration === "long" && (durationText.includes("30") || durationText.includes("45") || durationText.includes("min"))) show = false;
+
+        // Price filter
+        const priceValue = parseInt(priceText, 10);
+        if (price === "low" && priceValue >= 50) show = false;
+        if (price === "mid" && (priceValue < 50 || priceValue > 150)) show = false;
+        if (price === "high" && priceValue <= 150) show = false;
+
+        // Rating filter
+        if (rating) {
+          const ratingNum = (ratingText.match(/★/g) || []).length;
+          if (ratingNum < parseInt(rating)) show = false;
+        }
+
+        card.style.display = show ? "block" : "none";
+      });
+    }
+
+    function resetFilters() {
+      document.getElementById("durationFilter").value = "";
+      document.getElementById("priceFilter").value = "";
+      document.getElementById("ratingFilter").value = "";
+      document.querySelectorAll(".place-card").forEach(card => {
+        card.style.display = "block";
+      });
+    }
+
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+
+        const left = (currentIndex - 1 + slides.length) % slides.length;
+        const center = currentIndex;
+        const right = (currentIndex + 1) % slides.length;
+
+        if (index === left || index === center || index === right) {
+          slide.style.display = 'block';
+        }
+
+        if (index === center) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
+    setInterval(nextSlide, 4000); // auto-slide
+
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // gap included
+      carousel.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleReadMore() {
+      const dots = document.getElementById("dots");
+      const more = document.getElementById("more");
+      const btn = document.getElementById("readMoreBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        more.style.display = "none";
+        btn.textContent = "Read more";
+      } else {
+        dots.style.display = "none";
+        more.style.display = "inline";
+        btn.textContent = "Read less";
+      }
+    }
+
+
+
+  </script>
+
+
+
+  <footer class="footer">
+    <div class="overlay"></div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>More details</h3>
+
+      </div>
+
+
+
+      <footer class="footer">
+    <div class="overlay"></div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>More details</h3>
+
+      </div>
+
+
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: farhanalikolachi014@gmail.com</p>
+        <p>Phone: +92 313 0230246</p>
+        <div class="social-icons">
+          <a href="https://wa.me/+923130230246"><img
+              src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c99945a2.jpg"></a>
+          <a href="https://www.instagram.com/notyour_farhu/"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmw5rkDKJDFiG1OS5G_L7P-B6CDHGEk88VZw&s"></a>
+          <a href="https://www.facebook.com/profile.php?id=61554707979064"><img
+              src="https://img.freepik.com/premium-psd/facebook-logo-blue-circle_705838-12823.jpg?semt=ais_hybrid&w=740&q=80"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © Is it possible to explore all of USA in 2025 on a low budget?
+    </div>
+  </footer>
+
+</body>
+
+</html>

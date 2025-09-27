@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Turkey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+   body {
+  background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+              url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+
+.carousel-wrapper {
+  width: 100%;
+  /* overflow: hidden; */
+  position: relative;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.custom-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s;
+  gap: 20px;
+  width: 100%;
+}
+
+    .carousel-slide {
+      flex: 0 0 250px;
+      opacity: 0.5;
+      transition: transform 0.5s, opacity 0.5s;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      border: 3px solid transparent;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide.active {
+      transform: scale(1.2);
+      opacity: 1;
+      border: 3px solid yellow;
+      
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    header {
+      text-align: center;
+            margin-top: 35px;
+      padding: 20px;
+      font-size: 32px;
+      background: #1e1e1e;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+      font-size: 28px;
+      color: #00ffc8;
+    }
+
+    .places-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .place-card {
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .place-body {
+      padding: 15px;
+    }
+
+    .place-body h3 {
+      font-size: 18px;
+      color: #00ffcc;
+      margin: 0 0 10px;
+    }
+
+    .place-body .rating,
+    .place-body .info,
+    .place-body .price {
+      font-size: 14px;
+      color: #ccc;
+      margin: 4px 0;
+    }
+
+    .reserve-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .reserve-btn:hover {
+      background: #00ccaa;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      border: none;
+      color: black;
+      font-weight: bold;
+      margin: 0 10px;
+      border-radius: 10px;
+    }
+
+    .controls button:hover {
+      background-color: #00aacc;
+    }
+      
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00d9ff;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 20px;
+      color: #004d00;
+      font-weight: bold;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .rating {
+      color: green;
+      margin: 5px 0;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #004d00;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .nav-left {
+      left: -20px;
+    }
+
+    .nav-right {
+      right: -20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: none;
+      }
+
+      .card {
+        flex: 0 0 80%;
+      }
+    }
+      h2 {
+      padding: 20px;
+      color: #ffffff;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0 20px 20px;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      scroll-snap-align: start;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #004d00;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .rating {
+      color: green;
+      font-size: 14px;
+    }
+
+    .info {
+      color: #555;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #008000;
+      margin: 10px 0;
+    }
+
+    .reserve-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #00e64d;
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .reserve-btn:hover {
+      background-color: #00cc44;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+
+  .trip-check-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  margin-top: 60px; /* top margin */
+  overflow: hidden;
+}
+
+.trip-bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1; /* FULL opacity */
+  z-index: 1;
+}
+
+.trip-check-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3); /* optional for readability */
+}
+
+.trip-check-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.trip-check-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.trip-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.trip-btn {
+  padding: 10px 25px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.trip-btn:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+
+.area-section {
+  width: 100%;
+  margin-top: 50px;
+  padding: 40px 20px;
+   background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+              url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg');
+}
+
+.area-container {
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1300px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.area-left {
+  flex: 1 1 60%;
+  min-width: 300px;
+}
+
+.area-left h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.area-link {
+  font-weight: bold;
+  color: #004e7c;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.area-left h4 {
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+#desc {
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+#readMoreBtn {
+  background: none;
+  color: #0077aa;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.contact-links a {
+  color: #0077aa;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.nearby {
+  margin-top: 30px;
+}
+
+.nearby-section {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.nearby-section ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.nearby-section li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.nearby-section li img {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+
+.area-map {
+  flex: 1 1 35%;
+  min-width: 300px;
+}
+
+.area-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  border: none;
+  border-radius: 8px;
+}
+.footer-promo-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  font-family: sans-serif;
+  max-width: 1600px;
+  /* margin: 30px auto 0; */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.footer-promo-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.promo-icon svg {
+  width: 58px;
+  height: 28px;
+  stroke: #000000;
+}
+
+.promo-text strong {
+  color: #000;
+  font-size: 16px;
+  display: block;
+}
+
+.promo-subtext {
+  color: #000;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.promo-arrow svg {
+  stroke: #000000;
+  width: 20px;
+  height: 20px;
+}
+
+.hero-container {
+  margin-top: 50px;
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    video.background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5%;
+      color: #fff;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3); /* Optional dark overlay for readability */
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .hero-btn {
+      margin-top: 30px;
+      padding: 14px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+   header {
+      background: #004e7c;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+    .hero-carousel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hotel-grid {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    .hotel-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .hotel-card h3 {
+      margin: 0.75rem;
+    }
+    .hotel-card .location {
+      margin: 0 0.75rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .hotel-card .desc {
+      margin: 0.5rem 0.75rem 1rem;
+      flex-grow: 1;
+    }
+    .hotel-card .btn {
+      background: #00aacc;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.75rem;
+      margin: 0.75rem;
+      border-radius: 4px;
+    }
+    .hotel-card .btn:hover {
+      background: #0088aa;
+    }
+    .map-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .map-section h2 {
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+
+
+       
+    header {
+       background: linear-gradient(to right, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9), rgba(44, 83, 100, 0.9)),
+              url('https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border-bottom: 4px solid #00ffd0;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #ffffff;
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .hotel-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 255, 204, 0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hotel-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hotel-info h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #00ffcc;
+    }
+
+    .hotel-info p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .book-btn {
+      margin-top: 15px;
+      padding: 10px;
+      text-align: center;
+      background: transparent;
+      border: 2px solid #00ffcc;
+      color: #00ffcc;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .book-btn:hover {
+      background: #00ffcc;
+      color: #121212;
+    }
+
+
+    .footer {
+  background-image: url('4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer {
+  
+  position: relative;
+  background-image: url('https://images.pexels.com/photos/1836580/pexels-photo-1836580.jpeg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 60px 20px 30px;
+}
+
+.footer .overlay {
+  margin-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul li {
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section a {
+  color: #cccccc;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #ffffff;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #cccccc;
+}
+.social-icons a img{
+    height: 25px;
+}
+.social-icons a:hover {
+  color: #00acee;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #aaaaaa;
+}
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #111;
+  border: 1px solid #444;
+  border-radius: 12px;
+  justify-content: center;
+}
+
+.filter-container select,
+.filter-container input,
+.filter-container button {
+  padding: 8px 12px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.filter-container select:hover,
+.filter-container input:hover,
+.filter-container button:hover {
+  border-color: #00ffcc;
+}
+
+.filter-container button {
+  font-weight: bold;
+}
+
+.filter-container button:hover {
+  background-color: #222;
+  color: #00ffcc;
+}
+
+
+
+    
+  </style>
+</head>
+<body>
+
+  <h2>Welcome To Turkey</h2>
+
+  <div class="carousel-wrapper">
+    <div class="custom-carousel" id="customCarousel">
+      <!-- 10 Images -->
+      <div class="carousel-slide active"><img src="https://media2.thrillophilia.com/images/photos/000/178/603/original/1670915909_shutterstock_291252509.jpg?w=753&h=450&dpr=1.5" alt="1"></div>
+      <div class="carousel-slide"><img src="https://lp-cms-production.imgix.net/2024-12/shutterstock2171476409.jpg?auto=format,compress&q=72&w=1440&h=810&fit=crop" alt="2"></div>
+      <div class="carousel-slide"><img src="https://assets.bucketlistly.blog/sites/5adf778b6eabcc00190b75b1/content_entry5adf77af6eabcc00190b75b6/6121d23bbae320000be9b376/files/most-beautiful-places-to-visit-turkey-main-image-hd-op.webp" alt="3"></div>
+      <div class="carousel-slide"><img src="https://i0.wp.com/globalgrasshopper.com/wp-content/uploads/2012/05/Stunning-places-to-visit-in-Turkey.jpg?resize=840%2C561&ssl=1" alt="4"></div>
+      <div class="carousel-slide"><img src="https://i0.wp.com/jyoshankar.com/wp-content/uploads/2020/12/jyo_istanbul_travelguide_travelblogger_turkey_5.jpg?resize=750%2C938&ssl=1" alt="5"></div>
+      <div class="carousel-slide"><img src="https://images.squarespace-cdn.com/content/v1/5a2915cebff20052a88638f2/4612e11a-1c74-44a5-8c92-b74f237b05e2/Akdamar+Island+Lake+Van+Title+Image+2.jpg" alt="6"></div>
+      <div class="carousel-slide"><img src="https://sofiaadventures.com/wp-content/uploads/2019/02/17-of-the-Best-Places-to-Visit-in-Turkey-2-1080x675.png" alt="7"></div>
+      <div class="carousel-slide"><img src="https://www.flamingotravels.co.in/blog/wp-content/uploads/2023/02/Antalya-1.jpg" alt="8"></div>
+      <div class="carousel-slide"><img src="https://chasingthedonkey.b-cdn.net/wp-content/uploads/2021/05/West-terrace-of-Mount-Nemrut_Turkey_Depositphotos_101267160_s-2019.jpeg" alt="9"></div>
+      <div class="carousel-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScEqD9qMAG55MWGtKrLrA9kBvqwkRDvlHduA&s" alt="10"></div>
+    </div>
+
+  
+
+<header>Best Places to Visit in Turkey</header>
+<h2>Top Attractions</h2>
+
+<div class="filter-container">
+  <select id="durationFilter">
+    <option value="">All Durations</option>
+    <option value="short">0–1h</option>
+    <option value="medium">1–3h</option>
+    <option value="long">3h+</option>
+  </select>
+
+  <select id="priceFilter">
+    <option value="">All Prices</option>
+    <option value="low">Under $50</option>
+    <option value="mid">$50–$150</option>
+    <option value="high">Over $150</option>
+  </select>
+
+  <select id="ratingFilter">
+    <option value="">All Ratings</option>
+    <option value="5">★★★★★</option>
+    <option value="4">★★★★☆ & up</option>
+    <option value="3">★★★☆☆ & up</option>
+  </select>
+
+  <button onclick="applyFilters()">Apply</button>
+  <button onclick="resetFilters()">Reset</button>
+</div>
+
+
+<div class="places-container">
+
+  <div class="place-card">
+    <a href="https://en.wikipedia.org/wiki/Basilica_Cistern"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/65/b8/e4/caption.jpg?w=800&h=400&s=1" alt="Tour 1"></a>
+    <div class="place-body">
+      <h3>Basilica Cistern</h3>
+      <div class="rating">★★★★☆ (43)</div>
+      <div class="info">Duration: 45–60 min | Free cancellation</div>
+      <div class="price">From $41</div>
+      <a href="https://en.wikipedia.org/wiki/Basilica_Cistern" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <div class="place-card">
+    <a href="https://en.wikipedia.org/wiki/Basilica_Cistern"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/a9/1e/85/caption.jpg?w=800&h=400&s=1" alt="Tour 2"></a>
+    <div class="place-body">
+      <h3>Cistern Guided Tour</h3>
+      <div class="rating">★★★★★ (131)</div>
+      <div class="info">Duration: 30–45 min | Free cancellation</div>
+      <div class="price">From $45</div>
+      <a href="https://en.wikipedia.org/wiki/Basilica_Cistern" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <div class="place-card">
+    <a href=""><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/d1/92/f2/caption.jpg?w=800&h=400&s=1" alt="Tour 3"></a>
+    <div class="place-body">
+      <h3>Topkapi & Hagia Sophia</h3>
+      <div class="rating">★★★☆☆ (12)</div>
+      <div class="info">Duration: 6h | Free cancellation</div>
+      <div class="price">From $220</div>
+      <a href="#" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <div class="place-card">
+    <a href="https://en.wikipedia.org/wiki/Basilica_Cistern"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/b0/04/7a/caption.jpg?w=800&h=400&s=1" alt="Tour 4"></a>
+    <div class="place-body">
+      <h3>Hot Air Balloon Ride</h3>
+      <div class="rating">★★★★★ (305)</div>
+      <div class="info">Duration: 2h | Free cancellation</div>
+      <div class="price">From $180</div>
+      <a href="https://en.wikipedia.org/wiki/Basilica_Cistern" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+  <div class="place-card">
+   <a href="https://en.wikipedia.org/wiki/Basilica_Cistern"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/fc/0b/d9/caption.jpg?w=800&h=400&s=1" alt="Tour 1"></a> 
+    <div class="place-body">
+      <h3>Basilica Cistern Ticket</h3>
+      <div class="rating">★★★★☆ (43)</div>
+      <div class="info">Duration: 45–60 min | Free cancellation</div>
+      <div class="price">From $41</div>
+      <a href="https://en.wikipedia.org/wiki/Basilica_Cistern" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+ <div class="place-card">
+     <a href=""></a><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/0e/c9/72/caption.jpg?w=800&h=400&s=1" alt="Tour 2"></a>
+    <div class="place-body">
+      <h3>Cistern Guided Tour</h3>
+      <div class="rating">★★★★★ (131)</div>
+      <div class="info">Duration: 30–45 min | Free cancellation</div>
+      <div class="price">From $45</div>
+      <a href="https://en.wikipedia.org/wiki/Basilica_Cistern" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <div class="place-card">
+    <a href="https://en.wikipedia.org/wiki/Hagia_Sophia"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/9b/62/6d/caption.jpg?w=800&h=400&s=1" alt="Tour 3"></a>
+    <div class="place-body">
+      <h3>Hagia Sophia Grand Mosque</h3>
+      <div class="rating">★★★☆☆ (12)</div>
+      <div class="info">Duration: 6h | Free cancellation</div>
+      <div class="price">From $220</div>
+      <a href="https://en.wikipedia.org/wiki/Hagia_Sophia" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <div class="place-card">
+    <a href="https://www.britannica.com/place/Istanbul"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/4e/2a/8d/caption.jpg?w=800&h=400&s=1" alt="Tour 4"></a>
+    <div class="place-body">
+      <h3>Istanbul</h3>
+      <div class="rating">★★★★★ (305)</div>
+      <div class="info">Duration: 2h | Free cancellation</div>
+      <div class="price">From $180</div>
+      <a href="https://www.britannica.com/place/Istanbul" class="reserve-btn">Reserve</a>
+    </div>
+  </div>
+
+  <!-- Add more cards the same way if needed -->
+
+</div>
+
+<section class="trip-check-wrapper">
+  <video autoplay muted loop playsinline class="trip-bg-video">
+    <source src="https://videos.pexels.com/video-files/3741396/3741396-hd_1920_1080_30fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="trip-check-content">
+    <h3>Are you currently on your trip?</h3>
+    <p>Help us find experiences available for you.</p>
+    <div class="trip-buttons">
+      <button class="trip-btn">Yes</button>
+      <button class="trip-btn">No</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section class="area-section">
+    <div class="area-container">
+
+      <!-- LEFT CONTENT -->
+      <div class="area-left">
+        <h3>The area</h3>
+        <a href="#" class="area-link">Alemdar Mahallesi, Yerebatan Caddesi, No:1/3, Istanbul 34110 Türkiye</a>
+        <h4>Neighborhood: Sultanahmet</h4>
+        <p id="desc">
+          With so many unmissable attractions within a mere stroll of each other – and all set around the site of an ancient Byzantine hippodrome – Sultanahmet is an overwhelmingly popular tourist destination,
+          <span id="dots">...</span><span id="more">
+          With so many unmissable attractions within a mere stroll of each other – and all set around the site of an ancient Byzantine hippodrome – Sultanahmet is an overwhelmingly popular tourist destination, and a prime location for visitors to be wowed on a truly epic scale. Beyond the wonders of the Blue Mosque, the Hagia Sophia, Topkapi Palace, and more, this relatively small area of Istanbul somehow manages to retain an air of peace and calm. It offers visitors a significantly less celebrated but nonetheless pleasant network of quaint lanes and side streets, majestic panoramas of the Bosphorus, and an impressive assortment of accommodation options for all budgets and tastes.
+          </span>
+        </p>
+        <button onclick="toggleReadMore()" id="readMoreBtn">Read more</button>
+
+        <div class="contact-links">
+          <a href="#">Visit website</a> | <a href="#">Call</a>
+        </div>
+
+        <div class="nearby">
+          <h4>Best nearby</h4>
+          <div class="nearby-section">
+            <div>
+              <strong>Restaurants</strong><br />
+              <span>5,112 within 3 miles</span>
+              <ul>
+                <li><a href="https://www.tripadvisor.com/Restaurant_Review-g293974-d26224028-Reviews-Sultanahmet_360_Panorama_Restaurant-Istanbul.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/f3/41/50/hagia-sophia.jpg?w=200&h=200&s=1" alt=""></a> Sultanahmet 360 Panorama...</li>
+                <li><a href="https://www.tripadvisor.com/Restaurant_Review-g293974-d27106273-Reviews-Vamos_Restaurant-Istanbul.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/b6/3b/32/caption.jpg?w=200&h=200&s=1" alt=""></a> Vamos Restaurant</li>
+                <li><a href="https://www.tripadvisor.com/Restaurant_Review-g293974-d3609411-Reviews-Harab_be_Cafe_Hookah_Lounge-Istanbul.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/6a/d0/8c/after-sightseeing-in.jpg?w=200&h=200&s=1" alt=""></a> Harab’be Cafe & Hookah Lounge</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Attractions</strong><br />
+              <span>1,226 within 6 miles</span>
+              <ul>
+                <li><a href="https://www.tripadvisor.com/Attraction_Review-g293974-d294497-Reviews-Hagia_Sophia_Grand_Mosque-Istanbul.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/54/be/42/hagia-sophia-museum-by.jpg?w=200&h=200&s=1" alt=""></a> Hagia Sophia Grand Mosque</li>
+                <li><a href="https://www.tripadvisor.com/Attraction_Review-g293974-d294547-Reviews-TopkapI_Palace-Istanbul.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/14/2e/00/topkapi-sarayi.jpg?w=200&h=200&s=1" alt=""></a> Topkapi Palace</li>
+                <li><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/59/ff/1e/blue-mosque-istanbul.jpg?w=200&h=200&s=1" alt=""> Blue Mosque</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT MAP -->
+      <div class="area-map">
+        <iframe 
+          src="https://www.google.com/maps?q=Sultanahmet+Istanbul&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+<div class="footer-promo-box">
+  <div class="footer-promo-content">
+    <div class="promo-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#002E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0Z"/>
+        <circle cx="12" cy="10" r="3"/>
+        <path d="m3 3 2 2"/>
+      </svg>
+    </div>
+    <div class="promo-text">
+      <strong>Find things to do near Basilica Cistern</strong>
+      <div class="promo-subtext">Sights, experiences, and restaurants picked just for you.</div>
+    </div>
+  </div>
+  <div class="promo-arrow">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#002E1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l9-9-9-9"/>
+    </svg>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+
+
+  
+
+  <div class="hero-container">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="14043371_3840_2160_60fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-content">
+      <h1>Explore The Wanderer's guide to Antalya</h1>
+      <p>Ancient monuments, natural wonders, world-class diving sites—explore the blend of history and adventure in Antalya.</p>
+      <button class="hero-btn">Plan your trip</button>
+    </div>
+  </div>
+
+
+  <header>BEST HOTEL IN TURKEY</header>
+
+<div class="container">
+
+  <div class="hotel-card">
+    <a href="https://www.kempinski.com/en/ciragan-palace"><img src="https://media.privateupgrades.com/_data/default-hotel_image/13/66014/kempinski-ciragan-palace-10_1400x1400_auto.jpg" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Çırağan Palace Kempinski Istanbul </h3></a>
+      <p>$2,127/night  – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.kempinski.com/en/ciragan-palace" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+   <a href="https://www.mandarinoriental.com/en/bodrum/paradise-bay"> <img src="https://www.hotelsinheaven.com/wp-content/uploads/2019/03/mandarin-oriental-bodrum-pool-villa.jpg" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Mandarin Oriental, Bodrum</h3></a> 
+      <p>$2,000/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.mandarinoriental.com/en/bodrum/paradise-bay" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.otelz.com/en/hotel/lujo-bodrum"><img src="https://imgkit.otelz.com/turkiye/mugla/bodrum/lujo-bodrum-d6bb0bd6.jpg?tr=w-500,h-360,fo-auto,q-70" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Lujo Bodrum</h3></a>
+      <p>$1,222/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.otelz.com/en/hotel/lujo-bodrum" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.travelandleisure.com/maxx-royal-bodrum-resort-hotel-review-11760072"><img src="https://www.maxxroyal.com/media/ycgcnd15/maxx_royal_bodrum_suites.jpg" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Maxx Royal Bodrum </h3></a>
+      <p>$1,300/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.travelandleisure.com/maxx-royal-bodrum-resort-hotel-review-11760072" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+   <a href="https://www.tripadvisor.co.nz/Hotel_Review-g298660-d307427-Reviews-Macakizi_Hotel_Bodrum-Golturkbuku_Bodrum_District_Mugla_Province_Turkish_Aegean_Coast.html"> <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/d7/45/c3/macakizi-hotel-bodrum.jpg?w=900&h=500&s=1" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Macakizi Hotel, Bodrum</h3></a>
+      <p> $570/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.tripadvisor.co.nz/Hotel_Review-g298660-d307427-Reviews-Macakizi_Hotel_Bodrum-Golturkbuku_Bodrum_District_Mugla_Province_Turkish_Aegean_Coast.html" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.regnumhotels.com/en/about-regnum-carya/"><img src="https://www.regnumhotels.com/media/znqf2pae/regnum-carya-about-us.jpg" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Regnum Carya, Antalya</h3></a>
+      <p>$450–$800/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.regnumhotels.com/en/about-regnum-carya/" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCDW1hcmRhbi1wYWxhY2VIM1gDaLUBiAEBmAExuAEXyAEM2AED6AEB-AECiAIBqAIDuAK5r97DBsACAdICJGYxNmQ5OGVkLTA4NTYtNDkxMi1hNDJjLWU1YTQ1MjU2NDMxN9gCBOACAQ&highlighted_hotels=18568&checkin=2025-07-20&redirected=1&city=-762951&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScE5HmUiFSEhyxMjYG5o1i1JWm7knU60dp-A&s" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Titanic Mardan Palace, Antalya</h3></a>
+      <p>$300–$700/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCDW1hcmRhbi1wYWxhY2VIM1gDaLUBiAEBmAExuAEXyAEM2AED6AEB-AECiAIBqAIDuAK5r97DBsACAdICJGYxNmQ5OGVkLTA4NTYtNDkxMi1hNDJjLWU1YTQ1MjU2NDMxN9gCBOACAQ&highlighted_hotels=18568&checkin=2025-07-20&redirected=1&city=-762951&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://reserving.com/hotels/asia/turkey/antalya/belek/kempinski-hotel-the-dome-belek"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDLhDsQZKTcpe-7WILhXrnhwEu0h28ivdohA&s" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Cappadocia Cave Suites</h3></a>
+      <p>$400–$650/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://reserving.com/hotels/asia/turkey/antalya/belek/kempinski-hotel-the-dome-belek" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+   <a href="https://www.onthebeach.co.uk/hotels/turkey/antalya/belek/calista-luxury-resort"> <img src="https://bynder.onthebeach.co.uk/cdn-cgi/image/width=1400,quality=70,fit=cover,format=auto/m/6d95afcb95303862/original/Calista-Luxury-Resort.jpg" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Calista Luxury Resort, Belek</h3></a>
+      <p>$350–$600/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.onthebeach.co.uk/hotels/turkey/antalya/belek/calista-luxury-resort" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+   <a href="https://www.tripadvisor.com/Hotel_Feature-g13587749-d649837-zft11441-D_Maris_Bay.html"> <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/7a/92/de/il-riccio.jpg?w=700&h=-1&s=1" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>D Maris Bay, Marmaris</h3></a>
+      <p>600–$1,200/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.tripadvisor.com/Hotel_Feature-g13587749-d649837-zft11441-D_Maris_Bay.html" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+   <a href="https://www.hillsidebeachclub.com/en/feel-good-stories"> <img src="https://storage.googleapis.com/hillsidebeachclub/uploads/blog/cover/1200x650/hillside-beach-club-189359-97.jpg?=7ba9302f129fc30435615993851718f2" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Hillside Beach Club, Fethiye</h3></a>
+      <p>$400/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.hillsidebeachclub.com/en/feel-good-stories" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.agoda.com/rixos-premium-gocek_2/hotel/gocek-tr.html?cid=1844104&ds=FbmsvLIiM%2BS51z8o"><img src="https://q-xx.bstatic.com/xdata/images/hotel/max500/475604060.jpg?k=9903ef2ec4f7d7a5d860e37d8a8b03d4534493de58c14fc5a8b3f1552f470fc5&o=" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Rixos Premium Gocek, Gocek</h3></a>
+      <p>$450–$900/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.agoda.com/rixos-premium-gocek_2/hotel/gocek-tr.html?cid=1844104&ds=FbmsvLIiM%2BS51z8o" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.tripadvisor.com/Hotel_Feature-g312725-d647824-zft16304-Voyage_Belek_Golf_Spa.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/87/56/c0/general-view.jpg?w=700&h=-1&s=1" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Voyage Belek Golf & Spa</h3></a>
+      <p>$300–$500/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.tripadvisor.com/Hotel_Feature-g312725-d647824-zft16304-Voyage_Belek_Golf_Spa.html" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.tuiholidays.ie/f/turkey/antalya-area/belek/hotels/cornelia-diamond-golf-resort-and-spa"></a><img src="https://content.tui.co.uk/adamtui/2024_10/8_12/e7cb2b80-5c1a-41c3-b074-b20300cafabb/ACC_031105_TUR_28WebOriginalCompressed.jpg?i10c=img.resize(width:658);img.crop(width:658%2Cheight:370)" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Cornelia Diamond Golf Resort & Spa, Belek </h3></a>
+      <p>$350–$700/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.tuiholidays.ie/f/turkey/antalya-area/belek/hotels/cornelia-diamond-golf-resort-and-spa" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.tripadvisor.com/Hotel_Review-g298664-d7710355-Reviews-Swissotel_Resort_Bodrum_Beach-Turgutreis_Bodrum_District_Mugla_Province_Turkish_Aegean.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/86/50/37/pool-at-sunset.jpg?w=900&h=500&s=1" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Swissôtel Resort Bodrum Beach</h3></a>
+      <p>$250–$500/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.tripadvisor.com/Hotel_Review-g298664-d7710355-Reviews-Swissotel_Resort_Bodrum_Beach-Turgutreis_Bodrum_District_Mugla_Province_Turkish_Aegean.html" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.secretescapes.com/chic-all-inclusive-turkey-lifestyle-resort-on-the-aegean-coast-club-marvy-izmir-turkey/sale-hotel?srsltid=AfmBOoqfp9Tlh2AChS3BQwhydXUUabZS8vYS4_CVqkQGExBamhd0RYAY"><img src="https://secretescapes-web.imgix.net/hotels/3841/5eef0310_f3e5_410d_94cc_0a3bd07de9c7.jpg?w=600&h=400&fit=crop&crop=entropy&auto=format,compress" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Club Marvy, İzmir </h3></a>
+      <p>$300–$400/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.secretescapes.com/chic-all-inclusive-turkey-lifestyle-resort-on-the-aegean-coast-club-marvy-izmir-turkey/sale-hotel?srsltid=AfmBOoqfp9Tlh2AChS3BQwhydXUUabZS8vYS4_CVqkQGExBamhd0RYAY" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.lastminute.com/hotels/turkey/fethiye/jiva-beach-resort-all-inclusive_hid-716245?hdpSearchId=3a0e8a747a1803585ba1a88ab86fb1429c14428707a2d8b44fd177fa2c051512&extReferenceId=3a0e8a747a1803585ba1a88ab86fb1429c14428707a2d8b44fd177fa2c051512&extReferenceType=HLP&searchId=&searchHotelId="><img src="https://res.cloudinary.com/lastminute/image/upload/q_auto/v1733238385/526330715_zxxsnx.jpg" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Jiva Beach Resort, Fethiye </h3></a>
+      <p>$200–$350/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.lastminute.com/hotels/turkey/fethiye/jiva-beach-resort-all-inclusive_hid-716245?hdpSearchId=3a0e8a747a1803585ba1a88ab86fb1429c14428707a2d8b44fd177fa2c051512&extReferenceId=3a0e8a747a1803585ba1a88ab86fb1429c14428707a2d8b44fd177fa2c051512&extReferenceType=HLP&searchId=&searchHotelId=" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.tripadvisor.com/Hotel_Review-g312737-d300020-Reviews-Liberty_Lykia-Oludeniz_Fethiye_Mugla_Province_Turkish_Aegean_Coast.html"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/1c/28/1b/liberty-hotels-lykia.jpg?w=900&h=500&s=1" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Liberty Hotels Lykia, Oludeniz</h3></a>
+      <p>$250–$450/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.tripadvisor.com/Hotel_Review-g312737-d300020-Reviews-Liberty_Lykia-Oludeniz_Fethiye_Mugla_Province_Turkish_Aegean_Coast.html" class="book-btn">Book Now</a>
+    </div>
+  </div>
+  <div class="hotel-card">
+    <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCC3ZpbGxhLW1haGFsSDNYA2i1AYgBAZgBMbgBF8gBDNgBA-gBAfgBAogCAagCA7gC4LzewwbAAgHSAiRiMjFjYjYzMC1iY2U2LTQ2MzMtYWMzMC05YmRmZGY5MmNjMGTYAgTgAgE&highlighted_hotels=1630695&checkin=2025-07-20&redirected=1&city=-755728&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838"><img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/353526514.jpg?k=a20addb07a3f6ce11e0fb37c932164e75197970923b3acfd82674e149119f211&o=&hp=1" alt="Hotel 1">
+    <div class="hotel-info">
+      <h3>Hotel Villa Mahal, Kalkan</h3></a>
+      <p>$400–$700/night – 5-star hotel</p>
+      <p>Free Wi-Fi, Great Views</p>
+      <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCC3ZpbGxhLW1haGFsSDNYA2i1AYgBAZgBMbgBF8gBDNgBA-gBAfgBAogCAagCA7gC4LzewwbAAgHSAiRiMjFjYjYzMC1iY2U2LTQ2MzMtYWMzMC05YmRmZGY5MmNjMGTYAgTgAgE&highlighted_hotels=1630695&checkin=2025-07-20&redirected=1&city=-755728&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+    <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCHmthbGthbi1saWt5YS1yZXNpZGVuY2UtYW1wLXNwYUgzWANotQGIAQGYATG4ARfIAQzYAQPoAQH4AQKIAgGoAgO4AtC93sMGwAIB0gIkODI1YjZhNjgtMzBiNS00N2U5LThjOTktMTRiYjkyMTdiNGZk2AIE4AIB&highlighted_hotels=7915591&checkin=2025-07-20&redirected=1&city=-758319&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838"><img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/326415586.jpg?k=a4e5a4922653f0121d8ea1e1df74226fc991549aa75da239d0e76a6af076f1ff&o=&hp=1" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Likya Residence Hotel & Spa, Kalkan </h3></a>
+      <p>$350–$600/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCHmthbGthbi1saWt5YS1yZXNpZGVuY2UtYW1wLXNwYUgzWANotQGIAQGYATG4ARfIAQzYAQPoAQH4AQKIAgGoAgO4AtC93sMGwAIB0gIkODI1YjZhNjgtMzBiNS00N2U5LThjOTktMTRiYjkyMTdiNGZk2AIE4AIB&highlighted_hotels=7915591&checkin=2025-07-20&redirected=1&city=-758319&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <div class="hotel-card">
+   <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCFGNhc2EtbWFyZ290LWJvdXRpcXVlSDNYA2i1AYgBAZgBMbgBF8gBDNgBA-gBAfgBAogCAagCA7gC9L7ewwbAAgHSAiRmYTgzZTNmNy1iMTA0LTQ5YTUtYmZjMi03MTE2YzhhYjM2MjHYAgTgAgE&highlighted_hotels=2751503&checkin=2025-07-20&redirected=1&city=-749044&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo2mT6DAGMsFbW1uB1ktTmHe2zt8Q9KAY1xg&s" alt="Hotel 2">
+    <div class="hotel-info">
+      <h3>Casa Margot Hotel, Fethiye</h3></a> 
+      <p>$350–$600/night – 5-star hotel</p>
+      <p>Restaurant, Spa, Scenic Rooms</p>
+      <a href="https://www.booking.com/searchresults.html?aid=356980&label=gog235jc-1DCAso5AFCFGNhc2EtbWFyZ290LWJvdXRpcXVlSDNYA2i1AYgBAZgBMbgBF8gBDNgBA-gBAfgBAogCAagCA7gC9L7ewwbAAgHSAiRmYTgzZTNmNy1iMTA0LTQ5YTUtYmZjMi03MTE2YzhhYjM2MjHYAgTgAgE&highlighted_hotels=2751503&checkin=2025-07-20&redirected=1&city=-749044&hlrd=user_sh&source=hotel&checkout=2025-07-21&keep_landing=1&sid=a44a8da3eef76a9ce4d799f7d192a838" class="book-btn">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Add 18 more hotel cards here -->
+
+</div>
+
+  
+  <div class="hero-container">
+    <video class="background-video" autoplay muted loop playsinline>
+      <source src="https://video-direct-tacdn-com.global.ssl.fastly.net/media/video-v/2d/20/b0/d8/caption_720.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    
+  </div>
+
+   
+
+  
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  
+
+  <script>
+    
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+
+        const left = (currentIndex - 1 + slides.length) % slides.length;
+        const center = currentIndex;
+        const right = (currentIndex + 1) % slides.length;
+
+        if (index === left || index === center || index === right) {
+          slide.style.display = 'block';
+        }
+
+        if (index === center) {
+          slide.classList.add('active');
+        }
+      });
+    }
+function applyFilters() {
+  const duration = document.getElementById("durationFilter").value;
+  const price = document.getElementById("priceFilter").value;
+  const rating = document.getElementById("ratingFilter").value;
+
+  const cards = document.querySelectorAll(".place-card");
+
+  cards.forEach(card => {
+    const durationText = card.querySelector(".info")?.innerText || "";
+    const priceText = card.querySelector(".price")?.innerText.replace(/[^\d]/g, "") || "0";
+    const ratingText = card.querySelector(".rating")?.innerText || "";
+
+    let show = true;
+
+    // Duration filter
+    if (duration === "short" && !durationText.includes("min")) show = false;
+    if (duration === "medium" && !(durationText.includes("1h") || durationText.includes("2h") || durationText.includes("3h"))) show = false;
+    if (duration === "long" && (durationText.includes("30") || durationText.includes("45") || durationText.includes("min"))) show = false;
+
+    // Price filter
+    const priceValue = parseInt(priceText, 10);
+    if (price === "low" && priceValue >= 50) show = false;
+    if (price === "mid" && (priceValue < 50 || priceValue > 150)) show = false;
+    if (price === "high" && priceValue <= 150) show = false;
+
+    // Rating filter
+    if (rating) {
+      const ratingNum = (ratingText.match(/★/g) || []).length;
+      if (ratingNum < parseInt(rating)) show = false;
+    }
+
+    card.style.display = show ? "block" : "none";
+  });
+}
+
+function resetFilters() {
+  document.getElementById("durationFilter").value = "";
+  document.getElementById("priceFilter").value = "";
+  document.getElementById("ratingFilter").value = "";
+  document.querySelectorAll(".place-card").forEach(card => {
+    card.style.display = "block";
+  });
+}
+
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Initialize
+    updateCarousel();
+    setInterval(nextSlide, 4000); // auto-slide
+
+
+        function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // gap included
+      carousel.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function toggleReadMore() {
+  const dots = document.getElementById("dots");
+  const more = document.getElementById("more");
+  const btn = document.getElementById("readMoreBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    more.style.display = "none";
+    btn.textContent = "Read more";
+  } else {
+    dots.style.display = "none";
+    more.style.display = "inline";
+    btn.textContent = "Read less";
+  }
+}
+
+
+   
+  </script>
+
+
+
+<footer class="footer">
+    <div class="overlay"></div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>More details</h3>
+
+      </div>
+
+
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: farhanalikolachi014@gmail.com</p>
+        <p>Phone: +92 313 0230246</p>
+        <div class="social-icons">
+          <a href="https://wa.me/+923130230246"><img
+              src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321c99945a2.jpg"></a>
+          <a href="https://www.instagram.com/notyour_farhu/"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmw5rkDKJDFiG1OS5G_L7P-B6CDHGEk88VZw&s"></a>
+          <a href="https://www.facebook.com/profile.php?id=61554707979064"><img
+              src="https://img.freepik.com/premium-psd/facebook-logo-blue-circle_705838-12823.jpg?semt=ais_hybrid&w=740&q=80"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © Is it possible to explore all of USA in 2025 on a low budget?
+    </div>
+  </footer>
+
+</body>
+</html>

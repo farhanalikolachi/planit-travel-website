@@ -44,3 +44,21 @@ In the future, the project can be expanded with backend integration (using PHP/L
 
 ---
 
+📸 Screenshots
+🏠 Home Page
+<br><br>
+<img width="930" height="398" alt="1" src="https://github.com/user-attachments/assets/a3206ce7-ffc7-4133-a23e-9e07df05477a" />
+<br><br>
+🌍 Popular Destinations
+<br><br>
+<img width="929" height="396" alt="2" src="https://github.com/user-attachments/assets/4480d187-c57b-4fe7-bf56-7e40c885bd0d" />
+<br><br>
+🇺🇸 USA Section
+<br><br>
+<img width="937" height="415" alt="4" src="https://github.com/user-attachments/assets/738626af-7c4c-4ed1-b5d5-dba655075187" />
+<br><br>
+
+
+<h2>Author</h2>
+Designed and Developed by Farhan ali kolachi
+HTML & CSS Based Web Design Project

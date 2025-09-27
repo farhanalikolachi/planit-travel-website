@@ -60,5 +60,5 @@ In the future, the project can be expanded with backend integration (using PHP/L
 
 
 <h2>Author</h2>
-Designed and Developed by Farhan ali kolachi
+Designed and Developed by Farhan ali kolachi <br>
 HTML & CSS Based Web Design Project

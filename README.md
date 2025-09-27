@@ -1,8 +1,7 @@
-# planit-travel-website
 
 <h1>Planit - Travel Website </h1>
 
-<h1>Project Description</h1> <br>
+<h3>Project Description</h3> <br>
 **Planit** is a modern and responsive travel website designed to help users explore popular destinations, discover tour packages, and book trips easily.  
 The website includes attractive visuals, destination highlights, and smooth navigation to provide an engaging travel planning experience.  
 
